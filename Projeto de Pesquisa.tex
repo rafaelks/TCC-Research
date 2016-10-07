@@ -49,6 +49,7 @@
 \usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{xcolor}
 % ---
 
 % ---
@@ -253,12 +254,63 @@ O \emph{Beacon} é considerada uma tecnologia muito segura, principalmente pelo 
 
 
 % ----------------------------------------------------------
-% Problematização  
+% Orçamento  
 % ----------------------------------------------------------
 
-\chapter{Problematização}
+\chapter{Orçamento}
 
-Aplicação de chamadas em sala de aula automatizado com Beacons.
+\begin{table}[ht]
+\caption{Investimento Fixo}
+\centering
+\begin{tabular}{l c r r}
+\hline\hline
+Descrição & Quantidade & Valor unitário & Valor total \\ [0.5ex]
+\hline
+Apple MBPr 15" 16GB 500GB SSD&1&R\$18.000&R\$18.000 \\
+iPhone 7 128GB&2&R\$4.000&R\$8.000 \\
+Beacon Estimote&10&R\$120&R\$1.200 \\ [1ex]
+\hline
+\textbf{Total}&&&\textbf{R\$27.000} \\ [1ex]
+\end{tabular}
+\label{table:nonlin}
+\end{table}
+
+\begin{table}[ht]
+\caption{Investimento Variável Mensal}
+\centering
+\begin{tabular}{l c r}
+\hline\hline
+Descrição & Quantidade &Valor \\ [0.5ex]
+\hline
+Servidor Ubuntu Server na AWS &1 (ou mais)&R\$100 \\
+\hline
+\textbf{Total}&&\textbf{R\$100} \\ [1ex]
+\end{tabular}
+\label{table:nonlin}
+\end{table}
+
+
+% ----------------------------------------------------------
+% Cronograma  
+% ----------------------------------------------------------
+
+\chapter{Cronograma}
+
+\begin{table}[ht]
+\caption{Cronograma}
+\centering
+\begin{tabular}{lc}
+    \hline
+    Projeto de Pesquisa&2017 \\ [0.5ex]
+    \hline
+    \begin{tabular}{lcccccccccccc}
+    Etapas do projeto& \cellcolor{blue!25} Jan&Fev&Mar&Abr&Mai&Jun&Jul&Ago&Set&Out&Nov&Dez \\
+    Etapas do projeto&&&&&&&&&&&& \\
+    Etapas do projeto&&&&&&&&&&&& \\
+    \end{tabular}
+\end{tabular}
+\label{table:nonlin}
+\end{table}
 
 
 % ---
