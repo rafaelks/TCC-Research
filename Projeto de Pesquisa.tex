@@ -203,10 +203,10 @@ Além da marcação de presença dos alunos, a aplicação identifica pontos de 
 Atualmente, para que um professor de uma disciplina faça a marcação de presença dos alunos, é necessário algum tipo de interação entre o aluno e o professor. O que mais se utiliza é quando o professor faz a chamada em voz alta, um por um, e o aluno precisa responder, também em voz alta. Ou também, o aluno pode assinar uma ata em todas as aulas, marcando sua presença. Ambos os métodos tem diversos problemas:
 
 \begin{itemize}
-    \item Um enorme tempo de aula é gasto para a marcação de presença;
-    \item Um aluno poderia responder por outro na chamada, mesmo que o colega não esteja em aula, causando assim a presença de um aluno que não está em aula;
-    \item Pelo fato de o papel de chamada ser físico, muitas vezes acontece de o professor perder por algum motivo (furto, desastres naturais, acidentes, esquecimento, etc);
-    \item Também pelo fato de ser manualmente preenchido, pode haver erro humano na marcação, dificultando o processo;
+    \item Um enorme tempo de aula é gasto para a marcação de presença
+    \item Um aluno poderia responder por outro na chamada, mesmo que o colega não esteja em aula, causando assim a presença de um aluno que não está em aula
+    \item Pelo fato de o papel de chamada ser físico, muitas vezes acontece de o professor perder por algum motivo (furto, desastres naturais, acidentes, esquecimento, etc)
+    \item Também pelo fato de ser manualmente preenchido, pode haver erro humano na marcação, dificultando o processo
 \end{itemize}
 
 
@@ -216,19 +216,40 @@ Atualmente, para que um professor de uma disciplina faça a marcação de presen
 
 \chapter{Estado da arte}
 
+\section{Instituição educacional}
+
 \section{Processo de chamada em sala de aula}
-
-
 
 \section{Smartphones}
 
+Em 2007, após o lançamento do iPhone, a popularização do termo \emph{smartphone} se tornou muito forte, mas o conceito é mais antigo do que isto \cite{smartphone-history-pictures}. Desde então, o número de \emph{smartphones} no mundo não parou de crescer, passando da marca de 2 bilhões em 2016, e o Brasil é o 6º País com maior número deles \cite{smartphone-numbers}.
+
 \section{Beacons}
 
-\subsection{Funcionamento}
+A tecnologia dos \emph{Beacons} começou a ficar mais popular por volta de 2013 \cite{beacon-what-is-it-forbes}, quando a Apple lançou ela junto ao novo iPhone, o modelo 5s. Junto com o lançamento da tecnologia no iPhone, a Apple colocou \emph{Beacons} em mais de 250 de suas lojas físicas \cite{beacon-apple-store-case}, trazendo assim uma experiência diferenciada para os clientes que entravam na loja, olhavam os produtos e faziam pedidos.
+
+Muitas pessoas se confundem que o \emph{Beacon} pode ser considerado bastante similar a tecnologia \emph{RFID (Radio-Frequency Identification)}, porém seu uso se diferente em alguns aspectos importantes:
+
+\begin{itemize}
+    \item Utiliza \emph{Bluetooth} para se comunicar, tornando-se assim uma tecnologia mais fácil de ser utilizada, devido ao grande volume de dispositivos que já vem com a tecnologia. Estima-se que até 2018, cerca de 90\% dos dispositivos terão \emph{Bluetooth LTE (Low Energy)} \cite{beacon-devices-estimate-2018}
+    \item Pelo fato de \emph{Beacons} serem mais robustos (em questões de hardware e firmware), eles se tornariam mais caros do que \emph{RFID} para uma linha de produção, por exemplo, onde a quantidade de tags utilizadas é imensa (uma por peça/produto). No sub-capítulo "Funcionamento" falarei mais sobre a complexidade do dispositivo e porque isto seria mais difícil.
+    \item O \emph{Beacon} fornece maior privacidade e opções de segurança ao usuário, pois ele requer alguns passos e autorizações para seu funcionamento \cite{beacon-apple-store-case}.
+\end{itemize}
 
 \subsection{Componentes de um beacon}
 
+Existem diversos modelos diferentes de \emph{Beacons}. Além das funcionalidades básicas, que explicarei a seguir, eles podem conter funcionalidades adicionais, como por exemplo: GPS, sensor de temperatura e conexão Wi-Fi \cite{beacon-sensors-easy-kontakt}.
+
+Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele tenha apenas: bateria, pequeno computador com um \emph{Bluetooth} e um \emph{firmware} que alimenta este computador, dizendo para o \emph{Beacon} o que deve ser feito. Os sensores são opcionais \cite{beacon-basic-hardware}.
+
+\subsection{Funcionamento}
+
+Cada Beacon, por padrão, contém três informações relevantes: \emph{UDID}, \emph{major} e \emph{minor}.
+
 \subsection{Segurança}
+
+O \emph{Beacon} é considerada uma tecnologia muito segura, principalmente pelo fato de ela depender da aprovação do usuário para seu funcionamento interferi-lo, pois em primeiro lugar, é necessário que o usuário tenha instalado um aplicativo que consiga ficar escutando as ondas de certos \emph{Beacons}, e mesmo que o usuário tenha o aplicativo instalado, ele ainda precisa aprovar o monitoramento dos \emph{Beacons}, podendo aprovar e restringir a qualquer momento.
+
 
 
 % ----------------------------------------------------------
@@ -256,7 +277,7 @@ Aplicação de chamadas em sala de aula automatizado com Beacons.
 % ----------------------------------------------------------
 % Referências bibliográficas
 % ----------------------------------------------------------
-\bibliography{abntex2-modelo-references}
+\bibliography{Referencias}
 
 % ----------------------------------------------------------
 % Glossário
