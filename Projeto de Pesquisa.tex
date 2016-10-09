@@ -218,7 +218,7 @@ Atualmente, para que um professor de uma disciplina faça a marcação de presen
 
 \section{Instituição educacional}
 
-\subscetion{Processo de chamada em sala de aula}
+\subsection{Processo de chamada em sala de aula}
 
 \section{Smartphones}
 
@@ -257,8 +257,8 @@ O funcionamento do Beacon, depende principalmente de três elementos que são co
 O \emph{Beacon} é considerada uma tecnologia muito segura, principalmente pelo fato de ela depender da aprovação do usuário para seu funcionamento interferi-lo, pois em primeiro lugar, é necessário que o usuário tenha instalado um aplicativo que consiga ficar escutando as ondas de certos \emph{Beacons}, e mesmo que o usuário tenha o aplicativo instalado, ele ainda precisa aprovar o monitoramento dos \emph{Beacons}, podendo aprovar e restringir a qualquer momento \cite{beacon-what-is-it-forbes}.
 
 \section{Tecnologias}
-\subscetion{Swift}
-\subscetion{Web Services}
+\subsection{Swift}
+\subsection{Web Services}
 \subsubsection{Infraestrutura}
 \subsubsection{Django}
 \subsubsection{JSON}
@@ -274,13 +274,36 @@ O \emph{Beacon} é considerada uma tecnologia muito segura, principalmente pelo 
 
 \chapter{Metodologia}
 \section{Proposta do sistema}
+
+Este projeto propõe o desenvolvimento de uma aplicação para \emph{iOS}, que poderá ser publicar na \emph{App Store}, onde alunos das instituições de ensino irão se autenticar para efetivamente usa-lo para que a chamada em sala de aula seja feita de forma automática. Além desta aplicação, também será desenvolvido um servidor web, que poderá ser hospedado em qualquer serviço de \emph{Cloud Computing} (\emph{AWS}, por exemplo). Neste servidor estará toda a integração com o aplicativo para \emph{iOS} e demais plataformas futuramente, como Android, por exemplo.
+
+\subsection{Aplicativo iOS}
+
+O aplicativo iOS é a aplicação na qual o aluno irá interagir, autenticando-se e vendo informações de suas disciplinas matriculadas, além de permitir acesso Bluetooth e de localização ao aplicativo, para que a presença do aluno seja marcada automaticamente nas disciplinas, através dos \emph{Beacons} instalados em sala de aula.
+
+O aluno, após autenticar-se, poderá acompanhar quais cadeiras está matriculado em uma listagem e dentro de cada cadeira poderá ver informações importantes como: nome do professor, e-mail do professor, sala de aula, data da próxima aula, quantidade de presenças e faltas e se possível, as notas da cadeira.
+
+\subsection{Servidor Web}
+
+O servidor web servirá como um apoio fundamental para o funcionamento do aplicativo, pois nele estarão todos os dados sincronizados entre o software e a instituição de ensino, além das informações providas do próprio aluno automaticamente, através dos \emph{Beacons}.
+
+Além de armazenar os dados, ele terá uma \emph{API}\footnote{Application Programming Interface: interface padrão para comunicação entre os dispositivos.} que fornecerá as informações no formato \emph{JSON}\footnote{Padrão aberto de comunicação em formato de objeto JavaScript, de fácil leitura e compreensão.} para as aplicações (e demais futuras que queiram integrar). Toda a comunicação com o servidor é feita de forma secura, utilizando o protocolo \emph{SSL}\footnote{Secure Sockets Layer: protocolo seguro de comunicação, que criptografa as informações através de um certificado seguro e validado}. 
+
 \section{Desenvolvimento do sistema}
 \subsection{Análise}
 \subsection{Projeto}
 \subsection{Codificação}
 \subsection{Testes}
 \subsection{Implantação}
+\section{Manutenção do sistema}
+
+O software utilizará \emph{git} para controle de versão, nunca sendo alterado código diretamente em produção ou qualquer outro meio que não esteja vinculado ao controle de versão.
+
 \section{Tecnologias e ferramentas}
+
+O desenvolvimento do software para \emph{iOS} será desenvolvimento na \emph{IDE} \footnote{Integrated Development Enviroment}, ou Ambiente Integrado para desenvolvimento) \emph{Xcode}, fornecido pela Apple para desenvolvimento de aplicativos \emph{iOS} e \emph{macOS}.
+
+WEB.
 
 
 
