@@ -87,7 +87,7 @@
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
-\titulo{Aplicação de chamadas em sala de aula automatizado com Beacons}
+\titulo{Aplicação que utiliza Beacons para automatizar a chamada em sala de aula}
 \autor{Rafael Kellermann Streit}
 \local{Brasil}
 \data{2016}
@@ -98,7 +98,7 @@
 \tipotrabalho{Projeto de Pesquisa}
 % O preambulo deve conter o tipo do trabalho, o objetivo, 
 % o nome da instituição e a área de concentração 
-\preambulo{Aplicação que faz as chamadas em sala de aula de maneira automatizada, utilizando Beacons.}
+\preambulo{Aplicação que faz a marcação de presença dos alunos em sala de aula de forma automatizada, utilizando Beacons.}
 % ---
 
 % ---
@@ -112,10 +112,10 @@
 		pdfauthor={\@author},
     	pdfsubject={\imprimirpreambulo},
 	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa}, 
-		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{projeto de pesquisa}{beacon}{bluetooth}{ios}{mobile}, 
+		colorlinks=false,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
     	filecolor=magenta,      		% color of file links
 		urlcolor=blue,
 		bookmarksdepth=4
@@ -218,7 +218,11 @@ Atualmente, para que um professor de uma disciplina faça a marcação de presen
 
 \section{Instituição educacional}
 
+Nesta pesquisa, estou considerando que uma instituição de ensino é qualquer instituição que tem como objetivo a educação de pessoas, com a presença de um tutor, professor ou instrutor. Na pesquisa, estou me baseando em instituições de ensino superior, mas o objetivo do software é poder atender também instituições de ensino médio e fundamental.
+
 \subsection{Processo de chamada em sala de aula}
+
+O processo de chamada em sala de aula nada mudou na maioria das escolas. A pessoal responsável pela turma, seja ela um professor, um tutor ou um instrutor, tem um papel com o nome de todos os alunos e a listagem de dias que ocorrerão as aulas daquela matéria. Então a cada aula o professor faz a famosa chamada, onde pergunta nome por nome de aluno e marca quando houver a falta de algum, na data presente. Reconheço que este processo é bastante democrático e funciona em basicamente todos os casos, porém, existem muitos problemas neste método, como: a perda de tempo de aula para fazer a chamada, a falha humana que pode ser causada e muitos outros.
 
 \section{Smartphones}
 
@@ -226,56 +230,92 @@ Em 2007, após o lançamento do iPhone, a popularização do termo \emph{smartph
 
 \section{Beacons}
 
-A tecnologia dos \emph{Beacons} começou a ficar mais popular por volta de 2013 \cite{beacon-what-is-it-forbes}, quando a Apple lançou ela junto ao novo iPhone, o modelo 5s. Junto com o lançamento da tecnologia no iPhone, a Apple colocou \emph{Beacons} em mais de 250 de suas lojas físicas \cite{beacon-apple-store-case}, trazendo assim uma experiência diferenciada para os clientes que entravam na loja, olhavam os produtos e faziam pedidos.
+A tecnologia dos \emph{Beacons} começou a ficar mais popular por volta de 2013 \cite{beacon-what-is-it-forbes}, quando a Apple lançou ela junto ao novo iPhone, o modelo 4S. Junto com o lançamento da tecnologia no iPhone, a Apple colocou \emph{Beacons} em mais de 250 de suas lojas físicas \cite{beacon-apple-store-case}, trazendo assim uma experiência diferenciada para os clientes que entravam na loja, olhavam os produtos e faziam pedidos.
 
-Muitas pessoas se confundem que o \emph{Beacon} pode ser considerado bastante similar a tecnologia \emph{RFID (Radio-Frequency Identification)}, porém seu uso se diferente em alguns aspectos importantes:
+Muitas pessoas se confundem que o \emph{Beacon} pode ser considerado bastante similar a tecnologia \emph{RFID (Radio-Frequency Identification)}, porém seu uso se difere em alguns aspectos importantes:
 
 \begin{itemize}
-    \item Utiliza \emph{Bluetooth} para se comunicar, tornando-se assim uma tecnologia mais fácil de ser utilizada, devido ao grande volume de dispositivos que já vem com a tecnologia. Estima-se que até 2018, cerca de 90\% dos dispositivos terão \emph{Bluetooth LTE (Low Energy)} \cite{beacon-devices-estimate-2018}
+    \item O \emph{Beacon} utiliza \emph{Bluetooth} para se comunicar, tornando-se assim uma tecnologia mais acessível, devido ao grande volume de dispositivos que já vem com a tecnologia. Estima-se que até 2018, cerca de 90\% dos dispositivos terão \emph{Bluetooth LTE (Low Energy)} \cite{beacon-devices-estimate-2018}.
     \item Pelo fato de \emph{Beacons} serem mais robustos (em questões de hardware e firmware), eles se tornariam mais caros do que \emph{RFID} para uma linha de produção, por exemplo, onde a quantidade de tags utilizadas é imensa (uma por peça/produto). No sub-capítulo "Funcionamento" falarei mais sobre a complexidade do dispositivo e porque isto seria mais difícil.
-    \item O \emph{Beacon} fornece maior privacidade e opções de segurança ao usuário, pois ele requer alguns passos e autorizações para seu funcionamento \cite{beacon-apple-store-case}.
+    \item O \emph{Beacon} fornece maior privacidade e opções de segurança ao usuário, pois ele requer alguns passos e autorizações para seu funcionamento, \cite{beacon-apple-store-case}, o que não é o caso de uma antena \emph{RFID} que lê qualquer tag que passa pelas ondas do leitor.
 \end{itemize}
 
 \subsection{Componentes de um beacon}
 
 Existem diversos modelos diferentes de \emph{Beacons}. Além das funcionalidades básicas, que explicarei a seguir, eles podem conter funcionalidades adicionais, como por exemplo: GPS, sensor de temperatura e conexão Wi-Fi \cite{beacon-sensors-easy-kontakt}.
 
-Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele tenha apenas: uma bateria, um pequeno computador com um \emph{Bluetooth} e um \emph{firmware} que alimenta este computador, dizendo para o \emph{Beacon} o que deve ser feito e como ele deve se comportar, além de armazenar as informações do Beacon usados para sua identificação: \emph{UDID}, \emph{major} e \emph{minor}. Os sensores são opcionais para seu funcionamento básico \cite{beacon-basic-hardware}.
+Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele tenha apenas: uma bateria, um pequeno computador com um \emph{Bluetooth} e um \emph{firmware} que alimenta este computador, dizendo para o \emph{Beacon} o que deve ser feito e como ele deve se comportar, além de armazenar as informações do Beacon usados para sua identificação: \emph{UDID}, \emph{major} e \emph{minor} \cite{beacon-basic-hardware}. Estas informações contidas dentro do \emph{Beacon}, são utilizadas para sua identificação dentro da aplicação, pois com ela é possível saber em qual contexto o usuário está. No exemplo do nosso software, todos os beacons podem ter o mesmo identificador, mas com \emph{major} diferentes, pois assim a aplicação precisa apenas escutar a um identificador mas com a diferença no valor do \emph{major} será possível saber em qual sala de aula ou local da instituição o aluno está.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.7\textwidth]{estimote-beacon}
-\caption{\emph{Beacon} da \emph{Estimote} com os componentes: capa de borracha (impermeável), \emph{hardware} com \emph{firmware} e \emph{Bluetooth}, bateria e protetor no fundo}
+    \caption{
+        \emph{Beacon} da \emph{Estimote} com os componentes: capa de borracha (impermeável), \emph{hardware} com \emph{firmware} e \emph{Bluetooth}, bateria e protetor no fundo
+    }
 \end{figure}
 
 \subsection{Funcionamento}
 
-O funcionamento do Beacon, depende principalmente de três elementos que são configuráveis: o interval de disparo de sinal (normalmente em torno de 600ms) e a força do sinal, que é o que irá determinar a distância máxima atingida pelo Beacon. O sistema operacional \emph{iOS} faz o scan dos dispositivos a cada 1 segundo, isto significa que se o o Beacon estiver com intervalo de disparo em 330ms, o iOS irá receber três vezes o sinal naquele momento. Esta configuração normalmente é feita para lugares mais barulhentos, onde o sinal pode não chegar sempre ao celular, por motivos de outras ondas intereferirem na comunicação \cite{beacon-how-it-works-estimote}.
+O funcionamento do \emph{Beacon}, depende principalmente de três elementos que são configuráveis: o intervalo de disparo de sinal (normalmente em torno de 600ms) e a força do sinal, que é o que irá determinar a distância máxima atingida pelo \emph{Beacon}. O sistema operacional \emph{iOS} faz o scan dos dispositivos a cada 1 segundo, isto significa que se o o \emph{Beacon} estiver com intervalo de disparo em 330ms, o iOS irá receber três vezes o sinal naquele momento. Esta configuração normalmente é feita para lugares mais barulhentos, onde o sinal pode não chegar sempre ao celular, por motivos de outras ondas interferirem na comunicação \cite{beacon-how-it-works-estimote}.
 
 \subsection{Segurança}
 
 O \emph{Beacon} é considerada uma tecnologia muito segura, principalmente pelo fato de ela depender da aprovação do usuário para seu funcionamento interferi-lo, pois em primeiro lugar, é necessário que o usuário tenha instalado um aplicativo que consiga ficar escutando as ondas de certos \emph{Beacons}, e mesmo que o usuário tenha o aplicativo instalado, ele ainda precisa aprovar o monitoramento dos \emph{Beacons}, podendo aprovar e restringir a qualquer momento \cite{beacon-what-is-it-forbes}.
 
 \section{Tecnologias}
+
 \subsection{Swift}
+
+Swift é uma linguagem \emph{open-source} extremamente moderna que foi liberada para o público em 2014, mas seu desenvolvimento inicou em 2010. Ela foi desenvolvida pela Apple, mas não é utilizada exclusivamente para seu ecossistema. Conquistou rapidamente os desenvolvedores de aplicativos para iOS e hoje é utilizada na grande maioria dos novos aplicativos.
+
+Como dito em \cite{swift-about}, Swift é uma linguagem estática, compilada e com uma sintaxe muito moderna que traz bastante segurança e rapidez aos desenvolvedores.
+
 \subsection{Web Services}
+
+Para o desenvolvimento dos \emph{web services}, serão utilizadas diversas tecnologias em conjunto, proporcionando assim um sistema facilmente escalável e seguro. 
+
 \subsubsection{Infraestrutura}
+
+Em questões de infraestutura, serão utilizadas as tecnologias Nginx e Gunicorn rodando em um Ubuntu Server LTS.
+
 \subsubsection{Django}
+
+Em questões de aplicação no \emph{web service}, será utilizado Django, que é um framework utilizado em aplicações Python, que fornece inúmeras facilidades como: ORM, construção de API, migrações de bancos de dados e um painel administrativo que se constrói sem grande esforço e gera um resultado excepcional.
+
 \subsubsection{JSON}
 
+Toda a comunicação entre a API e as aplicações será feita no padrão JSON, deixando assim uma comunicação uniforme e utilizando um padrão amplamente conhecido no mundo inteiro, de fácil leitura e compreensão.
+
+
+% ----------------------------------------------------------
+% Justificativa
+% ----------------------------------------------------------
 
 \chapter{Justificativa}
+
+% ----------------------------------------------------------
+% Objetivos
+% ----------------------------------------------------------
 
 \chapter{Objetivos}
 \section{Objetivos gerais}
 \section{Objetivos específicos}
 
+
+% ----------------------------------------------------------
+% Resultados Esperados
+% ----------------------------------------------------------
+
 \chapter{Resultados esperados}
+
+% ----------------------------------------------------------
+% Metodologia
+% ----------------------------------------------------------
 
 \chapter{Metodologia}
 \section{Proposta do sistema}
 
-Este projeto propõe o desenvolvimento de uma aplicação para \emph{iOS}, que poderá ser publicar na \emph{App Store}, onde alunos das instituições de ensino irão se autenticar para efetivamente usa-lo para que a chamada em sala de aula seja feita de forma automática. Além desta aplicação, também será desenvolvido um servidor web, que poderá ser hospedado em qualquer serviço de \emph{Cloud Computing} (\emph{AWS}, por exemplo). Neste servidor estará toda a integração com o aplicativo para \emph{iOS} e demais plataformas futuramente, como Android, por exemplo.
+Este projeto propõe o desenvolvimento de uma aplicação para \emph{iOS}, que poderá ser publicar na \emph{App Store}\footnote{Loja oficinal de aplicativos para iOS, maiores informações em: https://developer.apple.com/app-store/}, onde alunos das instituições de ensino irão se autenticar para efetivamente usa-lo para que a chamada em sala de aula seja feita de forma automática. Além desta aplicação, também será desenvolvido um servidor web, que poderá ser hospedado em qualquer serviço de \emph{Cloud Computing}\footnote{Computação em Nuvem, onde as preocupações com a largura de banda, espaço de armazenamento, poder de processamento, fiabilidade e segurança, são postas de parte\cite{cloud-computing-about}} (\emph{AWS}\footnote{https://aws.amazon.com/pt/}, por exemplo). Neste servidor estará toda a integração com o aplicativo para \emph{iOS} e demais plataformas futuramente, como \emph{Android}\footnote{Sistema Operacional Open Source desenvolvido pelo Google e disponível em: https://android.com/intl/pt\-BR\_br/}, por exemplo.
 
 \subsection{Aplicativo iOS}
 
@@ -287,7 +327,7 @@ O aluno, após autenticar-se, poderá acompanhar quais cadeiras está matriculad
 
 O servidor web servirá como um apoio fundamental para o funcionamento do aplicativo, pois nele estarão todos os dados sincronizados entre o software e a instituição de ensino, além das informações providas do próprio aluno automaticamente, através dos \emph{Beacons}.
 
-Além de armazenar os dados, ele terá uma \emph{API}\footnote{Application Programming Interface: interface padrão para comunicação entre os dispositivos.} que fornecerá as informações no formato \emph{JSON}\footnote{Padrão aberto de comunicação em formato de objeto JavaScript, de fácil leitura e compreensão.} para as aplicações (e demais futuras que queiram integrar). Toda a comunicação com o servidor é feita de forma secura, utilizando o protocolo \emph{SSL}\footnote{Secure Sockets Layer: protocolo seguro de comunicação, que criptografa as informações através de um certificado seguro e validado}. 
+Além de armazenar os dados, ele terá uma \emph{API}\footnote{Application Programming Interface: interface padrão para comunicação entre os dispositivos \cite{footnote-api}.} que fornecerá as informações no formato \emph{JSON}\footnote{Padrão aberto de comunicação em formato de objeto JavaScript, de fácil leitura e compreensão \cite{footnote-json}.} para as aplicações (e demais futuras que queiram integrar). Toda a comunicação com o servidor é feita de forma secura, utilizando o protocolo \emph{SSL}\footnote{Secure Sockets Layer: protocolo seguro de comunicação, que criptografa as informações através de um certificado seguro e validado \cite{footnote-ssl}}. 
 
 \section{Desenvolvimento do sistema}
 \subsection{Análise}
@@ -297,14 +337,13 @@ Além de armazenar os dados, ele terá uma \emph{API}\footnote{Application Progr
 \subsection{Implantação}
 \section{Manutenção do sistema}
 
-O software utilizará \emph{git} para controle de versão, nunca sendo alterado código diretamente em produção ou qualquer outro meio que não esteja vinculado ao controle de versão.
+O software utilizará \emph{git}\footnote{Sistema de controle de versão amplamente utilizado no mundo, disponível em: https://git-scm.com} para controle de versão, nunca sendo alterado código diretamente em produção ou qualquer outro meio que não esteja vinculado ao controle de versão.
 
 \section{Tecnologias e ferramentas}
 
 O desenvolvimento do software para \emph{iOS} será desenvolvimento na \emph{IDE} \footnote{Integrated Development Enviroment}, ou Ambiente Integrado para desenvolvimento) \emph{Xcode}, fornecido pela Apple para desenvolvimento de aplicativos \emph{iOS} e \emph{macOS}.
 
-WEB.
-
+Na aplicação web, serão utilizadas ferramentas já muito maduras no mercado, com o objetivo de ter uma aplicação estável, de fácil manutenção e segura. A primeira camada de comunicação do servidor será feita com \emph{Nginx}\footnote{Servidor Web mundialmente conhecido e utilizado, disponível em: https://nginx.com}, seguida do \emph{Gunicorn}\footnote{Servidor Python WSGI HTTP para Linux, disponível em: http://gunicorn.org}, responsável por manter a aplicação feita em \emph{Django}\footnote{Framework Python amplamente utilizado, disponível em: https://djangoproject.com} sempre ligada, respondendo as demandas dos usuários. O \emph{Django} oferece soluções muito fáceis e eficientes para a construção de um banco de dados, que neste caso será o \emph{PostgreSQL}\footnote{Banco de Dados Open Source, disponível em: https://postgresql.org}, para a construção de um painel administrativo e também de um API.
 
 
 % ----------------------------------------------------------
@@ -314,9 +353,8 @@ WEB.
 \chapter{Orçamento}
 
 \begin{table}[ht]
-\caption{Investimento Fixo}
-\centering
-\begin{tabular}{l c r r}
+\caption{Investimento Inicial Fixo}
+\begin{tabular}{lcrr}
 \hline\hline
 Descrição & Quantidade & Valor unitário & Valor total \\ [0.5ex]
 \hline
@@ -331,8 +369,7 @@ Beacon Estimote&10&R\$120&R\$1.200 \\ [1ex]
 
 \begin{table}[ht]
 \caption{Investimento Variável Mensal}
-\centering
-\begin{tabular}{l c r}
+\begin{tabular}{lcr}
 \hline\hline
 Descrição & Quantidade &Valor \\ [0.5ex]
 \hline
@@ -350,21 +387,10 @@ Servidor Ubuntu Server na AWS &1 (ou mais)&R\$100 \\
 
 \chapter{Cronograma}
 
-\begin{table}[ht]
-\caption{Cronograma}
+\begin{figure}[h]
 \centering
-\begin{tabular}{lc}
-    \hline
-    Projeto de Pesquisa&2017 \\ [0.5ex]
-    \hline
-    \begin{tabular}{lcccccccccccc}
-    Etapas do projeto& \cellcolor{blue!25} Jan&Fev&Mar&Abr&Mai&Jun&Jul&Ago&Set&Out&Nov&Dez \\
-    Etapas do projeto&&&&&&&&&&&& \\
-    Etapas do projeto&&&&&&&&&&&& \\
-    \end{tabular}
-\end{tabular}
-\label{table:nonlin}
-\end{table}
+\includegraphics[width=1.0\textwidth]{cronograma}
+\end{figure}
 
 
 % ----------------------------------------------------------
