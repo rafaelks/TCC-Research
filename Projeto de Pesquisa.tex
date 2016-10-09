@@ -53,12 +53,6 @@
 % ---
 
 % ---
-% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
-% ---
-\usepackage{lipsum}				% para geração de dummy text
-% ---
-
-% ---
 % Pacotes de citações
 % ---
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
@@ -67,6 +61,11 @@
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
+
+% ---
+% Diretório das imagens
+% ---
+\graphicspath{ {Images/} }
 
 % ---
 % Configurações do pacote backref
@@ -219,7 +218,7 @@ Atualmente, para que um professor de uma disciplina faça a marcação de presen
 
 \section{Instituição educacional}
 
-\section{Processo de chamada em sala de aula}
+\subscetion{Processo de chamada em sala de aula}
 
 \section{Smartphones}
 
@@ -241,15 +240,47 @@ Muitas pessoas se confundem que o \emph{Beacon} pode ser considerado bastante si
 
 Existem diversos modelos diferentes de \emph{Beacons}. Além das funcionalidades básicas, que explicarei a seguir, eles podem conter funcionalidades adicionais, como por exemplo: GPS, sensor de temperatura e conexão Wi-Fi \cite{beacon-sensors-easy-kontakt}.
 
-Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele tenha apenas: bateria, pequeno computador com um \emph{Bluetooth} e um \emph{firmware} que alimenta este computador, dizendo para o \emph{Beacon} o que deve ser feito. Os sensores são opcionais \cite{beacon-basic-hardware}.
+Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele tenha apenas: uma bateria, um pequeno computador com um \emph{Bluetooth} e um \emph{firmware} que alimenta este computador, dizendo para o \emph{Beacon} o que deve ser feito e como ele deve se comportar, além de armazenar as informações do Beacon usados para sua identificação: \emph{UDID}, \emph{major} e \emph{minor}. Os sensores são opcionais para seu funcionamento básico \cite{beacon-basic-hardware}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{estimote-beacon}
+\caption{\emph{Beacon} da \emph{Estimote} com os componentes: capa de borracha (impermeável), \emph{hardware} com \emph{firmware} e \emph{Bluetooth}, bateria e protetor no fundo}
+\end{figure}
 
 \subsection{Funcionamento}
 
-Cada Beacon, por padrão, contém três informações relevantes: \emph{UDID}, \emph{major} e \emph{minor}.
+O funcionamento do Beacon, depende principalmente de três elementos que são configuráveis: o interval de disparo de sinal (normalmente em torno de 600ms) e a força do sinal, que é o que irá determinar a distância máxima atingida pelo Beacon. O sistema operacional \emph{iOS} faz o scan dos dispositivos a cada 1 segundo, isto significa que se o o Beacon estiver com intervalo de disparo em 330ms, o iOS irá receber três vezes o sinal naquele momento. Esta configuração normalmente é feita para lugares mais barulhentos, onde o sinal pode não chegar sempre ao celular, por motivos de outras ondas intereferirem na comunicação \cite{beacon-how-it-works-estimote}.
 
 \subsection{Segurança}
 
-O \emph{Beacon} é considerada uma tecnologia muito segura, principalmente pelo fato de ela depender da aprovação do usuário para seu funcionamento interferi-lo, pois em primeiro lugar, é necessário que o usuário tenha instalado um aplicativo que consiga ficar escutando as ondas de certos \emph{Beacons}, e mesmo que o usuário tenha o aplicativo instalado, ele ainda precisa aprovar o monitoramento dos \emph{Beacons}, podendo aprovar e restringir a qualquer momento.
+O \emph{Beacon} é considerada uma tecnologia muito segura, principalmente pelo fato de ela depender da aprovação do usuário para seu funcionamento interferi-lo, pois em primeiro lugar, é necessário que o usuário tenha instalado um aplicativo que consiga ficar escutando as ondas de certos \emph{Beacons}, e mesmo que o usuário tenha o aplicativo instalado, ele ainda precisa aprovar o monitoramento dos \emph{Beacons}, podendo aprovar e restringir a qualquer momento \cite{beacon-what-is-it-forbes}.
+
+\section{Tecnologias}
+\subscetion{Swift}
+\subscetion{Web Services}
+\subsubsection{Infraestrutura}
+\subsubsection{Django}
+\subsubsection{JSON}
+
+
+\chapter{Justificativa}
+
+\chapter{Objetivos}
+\section{Objetivos gerais}
+\section{Objetivos específicos}
+
+\chapter{Resultados esperados}
+
+\chapter{Metodologia}
+\section{Proposta do sistema}
+\section{Desenvolvimento do sistema}
+\subsection{Análise}
+\subsection{Projeto}
+\subsection{Codificação}
+\subsection{Testes}
+\subsection{Implantação}
+\section{Tecnologias e ferramentas}
 
 
 
@@ -313,14 +344,6 @@ Servidor Ubuntu Server na AWS &1 (ou mais)&R\$100 \\
 \end{table}
 
 
-% ---
-% Conclusão
-% ---
-\chapter*[Considerações finais]{Considerações finais}
-\addcontentsline{toc}{chapter}{Considerações finais}
-
-\lipsum[31-33]
-
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
 % ----------------------------------------------------------
@@ -338,72 +361,5 @@ Servidor Ubuntu Server na AWS &1 (ou mais)&R\$100 \\
 % Consulte o manual da classe abntex2 para orientações sobre o glossário.
 %
 %\glossary
-
-% ----------------------------------------------------------
-% Apêndices
-% ----------------------------------------------------------
-
-% ---
-% Inicia os apêndices
-% ---
-\begin{apendicesenv}
-
-% Imprime uma página indicando o início dos apêndices
-\partapendices
-
-% ----------------------------------------------------------
-\chapter{Quisque libero justo}
-% ----------------------------------------------------------
-
-\lipsum[50]
-
-% ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
-% ----------------------------------------------------------
-\lipsum[55-57]
-
-\end{apendicesenv}
-% ---
-
-
-% ----------------------------------------------------------
-% Anexos
-% ----------------------------------------------------------
-
-% ---
-% Inicia os anexos
-% ---
-\begin{anexosenv}
-
-% Imprime uma página indicando o início dos anexos
-\partanexos
-
-% ---
-\chapter{Morbi ultrices rutrum lorem.}
-% ---
-\lipsum[30]
-
-% ---
-\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
-parturient montes nascetur ridiculus mus}
-% ---
-
-\lipsum[31]
-
-% ---
-\chapter{Fusce facilisis lacinia dui}
-% ---
-
-\lipsum[32]
-
-\end{anexosenv}
-
-%---------------------------------------------------------------------
-% INDICE REMISSIVO
-%---------------------------------------------------------------------
-
-\printindex
-
 
 \end{document}
