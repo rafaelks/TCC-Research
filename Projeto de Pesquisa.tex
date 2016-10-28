@@ -293,20 +293,46 @@ Toda a comunicação entre a API e as aplicações será feita no padrão JSON, 
 
 \chapter{Justificativa}
 
+Conforme o gráfico abaixo, pode-se notar que o crescimento do uso de smartphones no Brasil cresce drasticamente a cada ano, deixando claramente evidente que grande parte da população tem, pelo menos, um smartphone.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{smartphone_sales}
+    \caption{
+        Número de vendas de smartphones no mundo e uma projeção para o futuro, até 2021 \cite{smartphone-numbers-image}.
+    }
+\end{figure}
+
+Com com estas informações, pode-se entender que a maioria das pessoas que frequenta uma instituição de ensino, terá um \emph{smartphone} em mãos. Levando em consideração que a maioria dos \emph{smartphones} no mercado tem a tecnologia \emph{Bluetooth}, pode-se entender então, que é uma tecnologia bastante presente nos dias atuais, tendendo a ser mais presente ainda com a entrada de novos dispositivos que aderirem a tecnologia \cite{bluetooth-devices}.
+
+Neste cenário, diante dos problemas citados no capítulo de problematização, foi concluído que pode-se resolver os problemas utilizando uma tecnologia como o \emph{Bluetooth}, otimizando o tempo gasto em sala de aula, deixando-a mais produtiva e dinâmica.
+
+
 % ----------------------------------------------------------
 % Objetivos
 % ----------------------------------------------------------
 
 \chapter{Objetivos}
-\section{Objetivos gerais}
-\section{Objetivos específicos}
 
+\section{Objetivos gerais}
+Desenvolver um produto para a otimização de marcação de presença de alunos em sala de aula com a utilizando de \emph{Beacons}, presentes em seus \emph{smartphones}.
+
+\section{Objetivos específicos}
+\begin{enumerate}
+  \item Desenvolver uma aplicação web para fornecimento de informações dos alunos aos aplicativos através de uma \emph{API}, além de fornecer as informações de presença aos professores em formato de relatório;
+  \item Desenvolver uma aplicação para \emph{iOS} que será utilizada pelos alunos para a marcação de presença em sala de aula de forma automática, utilizando \emph{Beacons} que serão instalados em salas de aula e na instituição de ensino;
+  \item Testar aplicação em uma sala de aula de alguma instituição de ensino com um grupo de alunos, durante pelo menos 3 meses;
+\end{enumerate}
 
 % ----------------------------------------------------------
 % Resultados Esperados
 % ----------------------------------------------------------
 
 \chapter{Resultados esperados}
+
+Espera-se atingir o objetivo proposto, tornando viável um melhor controle de presença dos alunos em instituições de ensino, mais produtivo e mais eficaz do que o atual praticado pela maioria das instituições.
+O sucesso desta aplicação, bem como sua comercialização, também é esperada, podendo assim, ser aplicada em diversas instituições de ensino com cenários diferentes.
+
 
 % ----------------------------------------------------------
 % Metodologia
@@ -331,10 +357,25 @@ Além de armazenar os dados, ele terá uma \emph{API}\footnote{Application Progr
 
 \section{Desenvolvimento do sistema}
 \subsection{Análise}
+
+Será feito uma análise de quais os elementos (e suas características) existentes em um ambiente de chamadas de uma instituição de ensino superior que podem ajudar na elaboração do projeto, com informações importantes e até mesmo obrigatórias, do ponto de vista jurídico.
+
 \subsection{Projeto}
+
+A partir dos dados analisados, serão criados diagramas que demonstrarão a estrutura e fluxo da aplicação. Em seguirá será feito o projeto da interface com \emph{mockups} do aplicativo para visualização.
+
 \subsection{Codificação}
+
+A codificação deste produto será utilizando o paradigma de orientação à objetos. As linguagens serão \emph{Swift} e \emph{Python}. Para que esta aplicação possa ser desenvolvida, será utilizado a \emph{IDE} \emph{Xcode} para criação do aplicativo \emph{iOS} e um editor de textos para a criação da aplicação web. Para realizar os testes e também utilizar a aplicação, será necessário pelo menos um dispositivo com \emph{iOS}, um navegador web e um \emph{Beacon}.
+
 \subsection{Testes}
+
+Tanto a aplicação web quanto a aplicação para \emph{iOS} terão testes unitários automatizados, além dos testes que serão realizados manualmente para a identificação da posição e potência de sinal do \emph{Beacon}, para encontrar assim o melhor cenário em uma sala de aula para seu funcionamento. Após o término do desenvolvimento inicial da aplicação, pretende-se testar com alguns alunos em uma sala de aula por pelo menos 3 meses, para assim certificar-se de que o sistema está realmente oferecendo o suporte necessário.
+
 \subsection{Implantação}
+
+O \emph{software} a ser desenvolvido será instalado em um servidor na nuvem \emph{Ubuntu Server LTS} e a aplicação \emph{iOS} inicialmente será distribuída através do \emph{TestFlight}, que é uma plataforma de distribuição fornecida para a \emph{Apple} enquanto a aplicação não está disponível para o público. Quando a aplicação estiver pronta para o público, ela será publicada na \emph{App Store}, sendo assim, acessível por todos.
+
 \section{Manutenção do sistema}
 
 O software utilizará \emph{git}\footnote{Sistema de controle de versão amplamente utilizado no mundo, disponível em: https://git-scm.com} para controle de versão, nunca sendo alterado código diretamente em produção ou qualquer outro meio que não esteja vinculado ao controle de versão.
