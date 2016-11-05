@@ -50,6 +50,7 @@
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{xcolor}
+\usepackage{tabularx}
 % ---
 
 % ---
@@ -200,13 +201,13 @@ Além da marcação de presença dos alunos, a aplicação identifica pontos de 
 
 \chapter{Problematização}
 
-Atualmente, para que um professor de uma disciplina faça a marcação de presença dos alunos, é necessário algum tipo de interação entre o aluno e o professor. O que mais se utiliza é quando o professor faz a chamada em voz alta, um por um, e o aluno precisa responder, também em voz alta. Ou também, o aluno pode assinar uma ata em todas as aulas, marcando sua presença. Ambos os métodos tem diversos problemas:
+Atualmente, para que um professor de uma disciplina faça a marcação de presença dos alunos, é necessário algum tipo de interação entre o aluno e o professor. O método mais utilizado é a chamada em voz alta, um por um, e o aluno precisa responder, também em voz alta. Outro método muito utilizado, é o aluno assinar uma ata em todas as aulas, marcando sua presença. Ambos os métodos tem diversos problemas:
 
 \begin{itemize}
-    \item Um enorme tempo de aula é gasto para a marcação de presença
-    \item Um aluno poderia responder por outro na chamada, mesmo que o colega não esteja em aula, causando assim a presença de um aluno que não está em aula
-    \item Pelo fato de o papel de chamada ser físico, muitas vezes acontece de o professor perder por algum motivo (furto, desastres naturais, acidentes, esquecimento, etc)
-    \item Também pelo fato de ser manualmente preenchido, pode haver erro humano na marcação, dificultando o processo
+    \item Enorme tempo de aula gasto para a marcação de presença;
+    \item Alunos podem responder por outro na chamada, mesmo que o colega não esteja em aula, causando assim a presença de um aluno que não está em aula;
+    \item O papel da chamada é físico, muitas vezes acontece de o professor perder por algum motivo (furto, desastres naturais, acidentes, esquecimento, etc);
+    \item Preenchimento manual, pode haver erro humano na marcação, dificultando o processo.
 \end{itemize}
 
 
@@ -218,15 +219,17 @@ Atualmente, para que um professor de uma disciplina faça a marcação de presen
 
 \section{Instituição educacional}
 
-Nesta pesquisa, estou considerando que uma instituição de ensino é qualquer instituição que tem como objetivo a educação de pessoas, com a presença de um tutor, professor ou instrutor. Na pesquisa, estou me baseando em instituições de ensino superior, mas o objetivo do software é poder atender também instituições de ensino médio e fundamental.
+Nesta pesquisa, está sendo considerado que uma instituição de ensino é qualquer instituição que tem como objetivo a educação de pessoas, com a presença de um tutor, professor ou instrutor. A pesquisa está se baseando principalmente em instituições de ensino superior, mas o objetivo do software é poder atender também instituições de ensino médio e fundamental.
 
 \subsection{Processo de chamada em sala de aula}
 
-O processo de chamada em sala de aula nada mudou na maioria das escolas. A pessoal responsável pela turma, seja ela um professor, um tutor ou um instrutor, tem um papel com o nome de todos os alunos e a listagem de dias que ocorrerão as aulas daquela matéria. Então a cada aula o professor faz a famosa chamada, onde pergunta nome por nome de aluno e marca quando houver a falta de algum, na data presente. Reconheço que este processo é bastante democrático e funciona em basicamente todos os casos, porém, existem muitos problemas neste método, como: a perda de tempo de aula para fazer a chamada, a falha humana que pode ser causada e muitos outros.
+O processo de chamada em sala de aula nada mudou na maioria das escolas nas últimas décadas. A pessoa responsável pela turma, seja ela um professor, um tutor ou um instrutor, tem um papel com o nome de todos os alunos e a listagem de dias que ocorrerão as aulas daquela matéria. Então a cada aula o professor faz a chamada, onde pergunta nome por nome de aluno e marca quando houver a falta de algum, na data presente. Reconhece-se que este processo é bastante democrático e funciona em basicamente todos os casos, porém, existem muitos problemas neste método, como: a perda de tempo de aula para fazer a chamada, a falha humana que pode ser causada e muitos outros.
 
 \section{Smartphones}
 
 Em 2007, após o lançamento do iPhone, a popularização do termo \emph{smartphone} se tornou muito forte, mas o conceito é mais antigo do que isto \cite{smartphone-history-pictures}. Desde então, o número de \emph{smartphones} no mundo não parou de crescer, passando da marca de 2 bilhões em 2016, e o Brasil é o 6º País com maior número deles \cite{smartphone-numbers}.
+
+Por mais que existam milhares de modelos diferentes no mundo (e cada dia crescem mais), o Bluetooth é algo que pode ser incorporado em qualquer um, por ser uma tecnologia barata de ser implantada, simples e amplamente usada no mundo \cite{smartphone-android-models}.
 
 \section{Beacons}
 
@@ -236,7 +239,7 @@ Muitas pessoas se confundem que o \emph{Beacon} pode ser considerado bastante si
 
 \begin{itemize}
     \item O \emph{Beacon} utiliza \emph{Bluetooth} para se comunicar, tornando-se assim uma tecnologia mais acessível, devido ao grande volume de dispositivos que já vem com a tecnologia. Estima-se que até 2018, cerca de 90\% dos dispositivos terão \emph{Bluetooth LTE (Low Energy)} \cite{beacon-devices-estimate-2018}.
-    \item Pelo fato de \emph{Beacons} serem mais robustos (em questões de hardware e firmware), eles se tornariam mais caros do que \emph{RFID} para uma linha de produção, por exemplo, onde a quantidade de tags utilizadas é imensa (uma por peça/produto). No sub-capítulo "Funcionamento" falarei mais sobre a complexidade do dispositivo e porque isto seria mais difícil.
+    \item Os \emph{Beacons} são mais robustos (em questões de hardware e firmware), eles se tornariam mais caros do que \emph{RFID} para a utilização em uma linha de produção industrial, por exemplo, onde a quantidade de \emph{tags} utilizadas é imensa (uma por peça/produto). No sub-capítulo "Funcionamento" é explicado mais sobre a complexidade do dispositivo e porque isto seria mais difícil.
     \item O \emph{Beacon} fornece maior privacidade e opções de segurança ao usuário, pois ele requer alguns passos e autorizações para seu funcionamento, \cite{beacon-apple-store-case}, o que não é o caso de uma antena \emph{RFID} que lê qualquer tag que passa pelas ondas do leitor.
 \end{itemize}
 
@@ -272,19 +275,22 @@ Como dito em \cite{swift-about}, Swift é uma linguagem estática, compilada e c
 
 \subsection{Web Services}
 
-Para o desenvolvimento dos \emph{web services}, serão utilizadas diversas tecnologias em conjunto, proporcionando assim um sistema facilmente escalável e seguro. 
+Para o desenvolvimento dos \emph{web services}, serão utilizadas diversas tecnologias em conjunto, proporcionando assim um sistema facilmente escalável e seguro. Ele seguirá um padrão em suas \emph{APIs} para que as mesmas possam ser utilizadas por todos os softwares que conversarão com a plataforma, seja ele um aplicativo ou um servidor que se integrará, fornecendo ou pedindo informações.
 
 \subsubsection{Infraestrutura}
 
-Em questões de infraestutura, serão utilizadas as tecnologias Nginx e Gunicorn rodando em um Ubuntu Server LTS.
+Em questões de infraestrutura, serão utilizadas as tecnologias \emph{Nginx} e \emph{Gunicorn} que irá rodar no sistema operacional \emph{Ubuntu Server LTS}. Todos os softwares são gratuitos e de código aberto.
 
 \subsubsection{Django}
 
-Em questões de aplicação no \emph{web service}, será utilizado Django, que é um framework utilizado em aplicações Python, que fornece inúmeras facilidades como: ORM, construção de API, migrações de bancos de dados e um painel administrativo que se constrói sem grande esforço e gera um resultado excepcional.
+Em questões de aplicação no \emph{web service}, será utilizado \emph{Django}, que é um \emph{framework} utilizado em aplicações \emph{Python}, que fornece inúmeras facilidades como: \emph{ORM (Object-relational mapping)}, construção de \emph{API}, migrações de bancos de dados e um painel administrativo que se constrói automaticamente baseado no modelo do banco de dados.
+
+Django utiliza o padrão \emph{MTV (Model-Template-View)} e o princípio \emph{DRY (Don't repeat yourself)} para o desenvolvimento. Isto faz com que exista uma separação muito clara entre o modelo, o template e o design do projeto, tornando-se mais fácil de reutilizar código e testar unitariamente os métodos e classes \cite{django-wikipedia}. 
 
 \subsubsection{JSON}
 
-Toda a comunicação entre a API e as aplicações será feita no padrão JSON, deixando assim uma comunicação uniforme e utilizando um padrão amplamente conhecido no mundo inteiro, de fácil leitura e compreensão.
+Toda a comunicação entre a \emph{API} e as aplicações será feita no padrão \emph{JSON (JavaScript Object Notation)}, deixando assim uma comunicação uniforme e utilizando um padrão amplamente conhecido no mundo inteiro, de fácil leitura e compreensão \cite{footnote-json}.
+
 
 
 % ----------------------------------------------------------
@@ -378,7 +384,9 @@ O \emph{software} a ser desenvolvido será instalado em um servidor na nuvem \em
 
 \section{Manutenção do sistema}
 
-O software utilizará \emph{git}\footnote{Sistema de controle de versão amplamente utilizado no mundo, disponível em: https://git-scm.com} para controle de versão, nunca sendo alterado código diretamente em produção ou qualquer outro meio que não esteja vinculado ao controle de versão.
+O software utilizará \emph{git}\footnote{Sistema de controle de versão amplamente utilizado no mundo, disponível em: https://git-scm.com} para controle de versão, na plataforma do \emph{GitHub} de forma privada. Nunca sendo alterado código diretamente em produção ou qualquer outro meio que não esteja vinculado ao controle de versão.
+
+Também haverá marcação de \emph{tags} para cada versão oficial enviada, tanto nos aplicativos móveis quanto no código do servidor.
 
 \section{Tecnologias e ferramentas}
 
@@ -393,32 +401,57 @@ Na aplicação web, serão utilizadas ferramentas já muito maduras no mercado, 
 
 \chapter{Orçamento}
 
+\noindent
 \begin{table}[ht]
-\caption{Investimento Inicial Fixo}
-\begin{tabular}{lcrr}
-\hline\hline
-Descrição & Quantidade & Valor unitário & Valor total \\ [0.5ex]
-\hline
-Apple MBPr 15" 16GB 500GB SSD&1&R\$18.000&R\$18.000 \\
-iPhone 7 128GB&2&R\$4.000&R\$8.000 \\
-Beacon Estimote&10&R\$120&R\$1.200 \\ [1ex]
-\hline
-\textbf{Total}&&&\textbf{R\$27.000} \\ [1ex]
-\end{tabular}
-\label{table:nonlin}
+    \caption{Investimento Inicial Fixo}
+    
+    \begin{tabularx}{\textwidth}{X|c|r|r}
+    \hline
+        \textbf{Descrição} &
+        \textbf{Quantidade} & 
+        \textbf{Valor unitário} & 
+        \textbf{Valor total} \\
+    \hline
+        Apple MBPr 15" 16GB 500GB SSD&1&R\$18.000&R\$18.000 \\
+        iPhone 7 128GB&2&R\$4.000&R\$8.000 \\
+        Beacon Estimote&10&R\$120&R\$1.200 \\ [1ex]
+    \hline
+        \textbf{Total}&&&\textbf{R\$27.000} \\ [1ex]
+    \end{tabularx}
 \end{table}
 
+\noindent
 \begin{table}[ht]
-\caption{Investimento Variável Mensal}
-\begin{tabular}{lcr}
-\hline\hline
-Descrição & Quantidade &Valor \\ [0.5ex]
-\hline
-Servidor Ubuntu Server na AWS &1 (ou mais)&R\$100 \\
-\hline
-\textbf{Total}&&\textbf{R\$100} \\ [1ex]
-\end{tabular}
-\label{table:nonlin}
+    \caption{Investimento com pessoas}
+
+    \begin{tabularx}{\textwidth}{X|l|c|r|r}
+    \hline
+        \textbf{Nome} & 
+        \textbf{Função} & 
+        \textbf{Quantidade} & 
+        \textbf{Valor hora} &
+        \textbf{Valor total} \\
+    \hline
+        Rafael K. Streit&Desenvolvedor &300&R\$100&R\$30.000\\
+        Eurico Antunes&Orientador&60&R\$200&R\$12.000 \\
+    \hline
+        \textbf{Total} &&&& \textbf{R\$32.000} \\
+    \end{tabularx}
+\end{table}
+
+\noindent
+\begin{table}[ht]
+    \caption{Investimento Mensal}
+    \begin{tabularx}{\textwidth}{X|c|r}
+    \hline
+        \textbf{Descrição} &
+        \textbf{Quantidade} &
+        \textbf{Valor} \\
+    \hline
+        Servidor Ubuntu Server na AWS &1 &R\$100 \\
+    \hline
+        \textbf{Total}&&\textbf{R\$100} \\ [1ex]
+    \end{tabularx}
 \end{table}
 
 
