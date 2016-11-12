@@ -191,7 +191,7 @@
 \chapter*[Introdução]{Introdução}
 \addcontentsline{toc}{chapter}{Introdução}
 
-O trabalho de pesquisa e desenvolvimento consiste na criação de uma aplicação capaz de substituir a marcação de presença atual em salas de aula, com o objetivo de ser mais assertiva, menos trabalhosa e mais rápida. A tecnologia utilizada para a identificação da presença do aluno chama-se \emph{Beacon} e está presente em praticamente todos os \emph{smartphones} atuais com suporte a \emph{Bluetooth 4.0}.
+O trabalho de pesquisa e desenvolvimento consiste na criação de uma aplicação capaz de substituir a marcação de presença atual em salas de aula, com o objetivo de ser mais precisa, menos trabalhosa e mais rápida. A tecnologia utilizada para a identificação da presença do aluno chama-se \emph{Beacon} e está presente em praticamente todos os \emph{smartphones} atuais com suporte a \emph{Bluetooth 4.0}.
 
 Além da marcação de presença dos alunos, a aplicação identifica pontos de interesse na instituição de ensino, informando aos gestores da instituição quais os locais mais frequentados pelos alunos e seus horários, informações que são adquiridas também através de \emph{Beacons}.
 
@@ -209,6 +209,8 @@ Atualmente, para que um professor de uma disciplina faça a marcação de presen
     \item O papel da chamada é físico, muitas vezes acontece de o professor perder por algum motivo (furto, desastres naturais, acidentes, esquecimento, etc);
     \item Preenchimento manual, pode haver erro humano na marcação, dificultando o processo.
 \end{itemize}
+
+Além de todos estes problemas, ainda existe uma enorme vantagem em informatizar o processo: permitir que sejam feitas análises de forma ágil e rápida em cima das informações de chamada, algo inviável de ser fazer quando o processo é manual. Com as informações computadorizadas, o aluno poderia facilmente receber um alerta quando está faltando demais às aulas e a instituição poderia, por exemplo, verificar qual o dia de maior falta e atual com maior agilidade.
 
 
 % ----------------------------------------------------------
@@ -231,6 +233,10 @@ Em 2007, após o lançamento do iPhone, a popularização do termo \emph{smartph
 
 Por mais que existam milhares de modelos diferentes no mundo (e cada dia crescem mais), o Bluetooth é algo que pode ser incorporado em qualquer um, por ser uma tecnologia barata de ser implantada, simples e amplamente usada no mundo \cite{smartphone-android-models}.
 
+A popularização de recursos baseados em \emph{Bluetooth}, tais como fones de ouvido, sensores cardíacos, caixas de som e integração com automóveis fazem com que o uso dessa tecnologia se torne igualmente comum.
+
+Além disto, o número de smartphones no Brasil não para de crescer, ultrapassando a 168 milhões em 2016 \cite{smartphone-brazil-numbers}, representando mais de 80\% da população brasileira \cite{brazil-population-numbers}.
+
 \section{Beacons}
 
 A tecnologia dos \emph{Beacons} começou a ficar mais popular por volta de 2013 \cite{beacon-what-is-it-forbes}, quando a Apple lançou ela junto ao novo iPhone, o modelo 4S. Junto com o lançamento da tecnologia no iPhone, a Apple colocou \emph{Beacons} em mais de 250 de suas lojas físicas \cite{beacon-apple-store-case}, trazendo assim uma experiência diferenciada para os clientes que entravam na loja, olhavam os produtos e faziam pedidos.
@@ -245,9 +251,9 @@ Muitas pessoas se confundem que o \emph{Beacon} pode ser considerado bastante si
 
 \subsection{Componentes de um beacon}
 
-Existem diversos modelos diferentes de \emph{Beacons}. Além das funcionalidades básicas, que explicarei a seguir, eles podem conter funcionalidades adicionais, como por exemplo: GPS, sensor de temperatura e conexão Wi-Fi \cite{beacon-sensors-easy-kontakt}.
+Existem diversos modelos diferentes de \emph{Beacons}. Além das funcionalidades básicas, que serão explicadas a seguir, eles podem conter funcionalidades adicionais, como por exemplo: \emph{GPS}, sensor de temperatura e conexão \emph{Wi-Fi} \cite{beacon-sensors-easy-kontakt}.
 
-Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele tenha apenas: uma bateria, um pequeno computador com um \emph{Bluetooth} e um \emph{firmware} que alimenta este computador, dizendo para o \emph{Beacon} o que deve ser feito e como ele deve se comportar, além de armazenar as informações do Beacon usados para sua identificação: \emph{UDID}, \emph{major} e \emph{minor} \cite{beacon-basic-hardware}. Estas informações contidas dentro do \emph{Beacon}, são utilizadas para sua identificação dentro da aplicação, pois com ela é possível saber em qual contexto o usuário está. No exemplo do nosso software, todos os beacons podem ter o mesmo identificador, mas com \emph{major} diferentes, pois assim a aplicação precisa apenas escutar a um identificador mas com a diferença no valor do \emph{major} será possível saber em qual sala de aula ou local da instituição o aluno está.
+Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele tenha apenas: uma bateria, um pequeno computador com um \emph{Bluetooth} e um \emph{firmware} que alimenta este computador, dizendo para o \emph{Beacon} o que deve ser feito e como ele deve se comportar, além de armazenar as informações do Beacon usados para sua identificação: \emph{UDID}, \emph{major} e \emph{minor} \cite{beacon-basic-hardware}. Estas informações contidas dentro do \emph{Beacon}, são utilizadas para sua identificação dentro da aplicação, pois com ela é possível saber em qual contexto o usuário está. No sofware desenvolvido no presente projeto, todos os \emph{Beacons} podem ter o mesmo identificador, mas com \emph{major} diferentes, pois assim a aplicação precisa apenas escutar a um identificador mas com a diferença no valor do \emph{major} será possível saber em qual sala de aula ou local da instituição o aluno está.
 
 \begin{figure}[h]
 \centering
@@ -359,7 +365,7 @@ O aluno, após autenticar-se, poderá acompanhar quais cadeiras está matriculad
 
 O servidor web servirá como um apoio fundamental para o funcionamento do aplicativo, pois nele estarão todos os dados sincronizados entre o software e a instituição de ensino, além das informações providas do próprio aluno automaticamente, através dos \emph{Beacons}.
 
-Além de armazenar os dados, ele terá uma \emph{API}\footnote{Application Programming Interface: interface padrão para comunicação entre os dispositivos \cite{footnote-api}.} que fornecerá as informações no formato \emph{JSON}\footnote{Padrão aberto de comunicação em formato de objeto JavaScript, de fácil leitura e compreensão \cite{footnote-json}.} para as aplicações (e demais futuras que queiram integrar). Toda a comunicação com o servidor é feita de forma secura, utilizando o protocolo \emph{SSL}\footnote{Secure Sockets Layer: protocolo seguro de comunicação, que criptografa as informações através de um certificado seguro e validado \cite{footnote-ssl}}. 
+Além de armazenar os dados, ele terá uma \emph{API}\footnote{Application Programming Interface: interface padrão para comunicação entre os dispositivos \cite{footnote-api}.} que fornecerá as informações no formato \emph{JSON}\footnote{Padrão aberto de comunicação em formato de objeto JavaScript, de fácil leitura e compreensão \cite{footnote-json}.} para as aplicações (e demais futuras que queiram integrar). Toda a comunicação com o servidor é feita de forma segura, utilizando o protocolo \emph{SSL}\footnote{Secure Sockets Layer: protocolo seguro de comunicação, que criptografa as informações através de um certificado seguro e validado \cite{footnote-ssl}}. 
 
 \section{Desenvolvimento do sistema}
 \subsection{Análise}
