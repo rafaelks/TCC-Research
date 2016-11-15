@@ -253,7 +253,24 @@ Muitas pessoas se confundem que o \emph{Beacon} pode ser considerado bastante si
 
 Existem diversos modelos diferentes de \emph{Beacons}. Além das funcionalidades básicas, que serão explicadas a seguir, eles podem conter funcionalidades adicionais, como por exemplo: \emph{GPS}, sensor de temperatura e conexão \emph{Wi-Fi} \cite{beacon-sensors-easy-kontakt}.
 
-Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele tenha apenas: uma bateria, um pequeno computador com um \emph{Bluetooth} e um \emph{firmware} que alimenta este computador, dizendo para o \emph{Beacon} o que deve ser feito e como ele deve se comportar, além de armazenar as informações do Beacon usados para sua identificação: \emph{UDID}, \emph{major} e \emph{minor} \cite{beacon-basic-hardware}. Estas informações contidas dentro do \emph{Beacon}, são utilizadas para sua identificação dentro da aplicação, pois com ela é possível saber em qual contexto o usuário está. No sofware desenvolvido no presente projeto, todos os \emph{Beacons} podem ter o mesmo identificador, mas com \emph{major} diferentes, pois assim a aplicação precisa apenas escutar a um identificador mas com a diferença no valor do \emph{major} será possível saber em qual sala de aula ou local da instituição o aluno está.
+Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele tenha:
+
+\begin{itemize}
+    \item Bateria: o Beacon precisa de energia para seu funcionamento, pois ficará emitindo sinais de tempo em tempo (isto é configurável) para que os dispositivos recebam suas informações.
+    \item Pequeno computador: para o funcionamento entre bateria, \emph{Bluetooth} e \emph{firmware}.
+    \item \emph{Bluetooth}: tecnologia utilizada para comunicação do \emph{Beacon} com os demais dispositivos.
+    \item \emph{Firmware}: software que irá configurar o Beacon, tanto suas informações (que estão descritas abaixo) quanto sua potência de sinal e também seu intervalo de disparo.
+\end{itemize}
+
+Além disto, é necessário que o \emph{Beacon} tenha algumas informações para seu mínimo funcionamento:
+
+\begin{itemize}
+    \item \emph{UDID}: identificador do \emph{Beacon} com tipo \emph{hash}. Pode ser igual ao de outros Beacons, desde que a aplicação tenha isto como objetivo.
+    \item \emph{Major}: identificador numérico do \emph{Beacon} para uso na aplicação.
+    \item \emph{Minor}: identificador numérico do \emph{Beacon} para uso na aplicação.
+\end{itemize}
+
+Estas informações contidas dentro do \emph{Beacon}, são utilizadas para sua identificação dentro da aplicação, pois com ela é possível saber em qual contexto o usuário está. No \emph{software} desenvolvido no presente projeto, todos os \emph{Beacons} podem ter o mesmo identificador, mas com \emph{major} diferentes, pois assim a aplicação precisa ficar apenas escutando um identificador mas com a diferença no valor do \emph{major} será possível saber em qual sala de aula ou local da instituição o aluno está.
 
 \begin{figure}[h]
 \centering
@@ -266,6 +283,14 @@ Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele ten
 \subsection{Funcionamento}
 
 O funcionamento do \emph{Beacon}, depende principalmente de três elementos que são configuráveis: o intervalo de disparo de sinal (normalmente em torno de 600ms) e a força do sinal, que é o que irá determinar a distância máxima atingida pelo \emph{Beacon}. O sistema operacional \emph{iOS} faz o scan dos dispositivos a cada 1 segundo, isto significa que se o o \emph{Beacon} estiver com intervalo de disparo em 330ms, o iOS irá receber três vezes o sinal naquele momento. Esta configuração normalmente é feita para lugares mais barulhentos, onde o sinal pode não chegar sempre ao celular, por motivos de outras ondas interferirem na comunicação \cite{beacon-how-it-works-estimote}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{beacon-how-it-works}
+    \caption{
+        A imagem mostra o comportamento do \emph{Beacon} com três telefones, um escutando-o, outro com Bluetooth desligado e outro escutando outro \emph{Beacon}. Fonte: Autor.
+    }
+\end{figure}
 
 \subsection{Segurança}
 
@@ -281,11 +306,17 @@ Como dito em \cite{swift-about}, Swift é uma linguagem estática, compilada e c
 
 \subsection{Web Services}
 
-Para o desenvolvimento dos \emph{web services}, serão utilizadas diversas tecnologias em conjunto, proporcionando assim um sistema facilmente escalável e seguro. Ele seguirá um padrão em suas \emph{APIs} para que as mesmas possam ser utilizadas por todos os softwares que conversarão com a plataforma, seja ele um aplicativo ou um servidor que se integrará, fornecendo ou pedindo informações.
+\emph{Web service} é uma interface que descreve uma coleção de operações que são acessíveis através da internet padronizados em \emph{XML}, \emph{JSON} ou algum tipo de padrão de informações conhecido, desde que todas as operações sigam o mesmo padrão. Ele providência todos os meios para a comunicação da aplicação com o servidor, tornando a comunicação padrão e centralizada para todas as aplicações do serviço \cite{introduction-web-services}.
+
+Para o desenvolvimento dos \emph{web services}, serão utilizadas diversas tecnologias em conjunto, proporcionando assim um sistema facilmente escalável e seguro. Ele utilizará o padrão \emph{JSON} em seus serviços para que as mesmas possam ser utilizadas por todos os softwares que conversarão com a plataforma, seja ele um aplicativo ou um servidor que se integrará, fornecendo ou pedindo informações.
 
 \subsubsection{Infraestrutura}
 
-Em questões de infraestrutura, serão utilizadas as tecnologias \emph{Nginx} e \emph{Gunicorn} que irá rodar no sistema operacional \emph{Ubuntu Server LTS}. Todos os softwares são gratuitos e de código aberto.
+Na infraestrutura, foi optado a utilização de software livre e de código-aberto, já conhecidos no mercado há muitos anos, por serem mais maduros e por consequência mais seguros e estáveis.
+
+Como servidor \emph{HTTP}, será utilizado o \emph{Nginx}, criado em 2002 com o objetivo de servir sites com um enorme volume de acessos. É um software bastante leve e utilizado mundialmente hoje em aplicações de grande escala \cite{nginx-book}.
+
+O sistema operacional utilizado no servidor será o \emph{Ubuntu Server LTS 16.04}, também é um software livre e de código aberto. Também foi escolhido este sistema operacional pelo fato de os autores já terem conhecimento prévio na utilização da tecnologias nesta plataforma, facilitando o desenvolvimento.
 
 \subsubsection{Django}
 
@@ -327,7 +358,7 @@ Neste cenário, diante dos problemas citados no capítulo de problematização, 
 \chapter{Objetivos}
 
 \section{Objetivos gerais}
-Desenvolver um produto para a otimização de marcação de presença de alunos em sala de aula com a utilizando de \emph{Beacons}, presentes em seus \emph{smartphones}.
+Otimizar as atividades de registro de presenças de alunos (controle de frequência em sala de aula) através do desenvolvimento e disponibilização de um produto com a utilização de \emph{Beacons} e \emph{smartphones}.
 
 \section{Objetivos específicos}
 \begin{enumerate}
@@ -353,7 +384,7 @@ O sucesso desta aplicação, bem como sua comercialização, também é esperada
 \chapter{Metodologia}
 \section{Proposta do sistema}
 
-Este projeto propõe o desenvolvimento de uma aplicação para \emph{iOS}, que poderá ser publicar na \emph{App Store}\footnote{Loja oficinal de aplicativos para iOS, maiores informações em: https://developer.apple.com/app-store/}, onde alunos das instituições de ensino irão se autenticar para efetivamente usa-lo para que a chamada em sala de aula seja feita de forma automática. Além desta aplicação, também será desenvolvido um servidor web, que poderá ser hospedado em qualquer serviço de \emph{Cloud Computing}\footnote{Computação em Nuvem, onde as preocupações com a largura de banda, espaço de armazenamento, poder de processamento, fiabilidade e segurança, são postas de parte\cite{cloud-computing-about}} (\emph{AWS}\footnote{https://aws.amazon.com/pt/}, por exemplo). Neste servidor estará toda a integração com o aplicativo para \emph{iOS} e demais plataformas futuramente, como \emph{Android}\footnote{Sistema Operacional Open Source desenvolvido pelo Google e disponível em: https://android.com/intl/pt\-BR\_br/}, por exemplo.
+Este projeto propõe o desenvolvimento de uma aplicação para \emph{iOS}, que poderá ser publicada na \emph{App Store}\footnote{Loja oficinal de aplicativos para iOS, maiores informações em: https://developer.apple.com/app-store/}, onde alunos das instituições de ensino irão se autenticar para efetivamente usa-lo para que a chamada em sala de aula seja feita de forma automática. Além desta aplicação, também será desenvolvido um servidor web, que poderá ser hospedado em qualquer serviço de \emph{Cloud Computing}\footnote{Computação em Nuvem, onde as preocupações com a largura de banda, espaço de armazenamento, poder de processamento, fiabilidade e segurança, são postas de parte\cite{cloud-computing-about}} (\emph{AWS}\footnote{https://aws.amazon.com/pt/}, por exemplo). Neste servidor estará toda a integração com o aplicativo para \emph{iOS} e demais plataformas futuramente, como \emph{Android}\footnote{Sistema Operacional Open Source desenvolvido pelo Google e disponível em: https://android.com/intl/pt\-BR\_br/}, por exemplo.
 
 \subsection{Aplicativo iOS}
 
