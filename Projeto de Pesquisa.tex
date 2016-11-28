@@ -191,9 +191,9 @@
 \chapter*[Introdução]{Introdução}
 \addcontentsline{toc}{chapter}{Introdução}
 
-O trabalho de pesquisa e desenvolvimento consiste na criação de uma aplicação capaz de substituir a marcação de presença atual em salas de aula, com o objetivo de ser mais precisa, menos trabalhosa e mais rápida. A tecnologia utilizada para a identificação da presença do aluno chama-se \emph{Beacon} e está presente em praticamente todos os \emph{smartphones} atuais com suporte a \emph{Bluetooth 4.0}.
+Este trabalho de pesquisa e desenvolvimento consiste na criação de uma aplicação capaz de substituir a marcação de presença atual em salas de aula, com o objetivo de ter maior precisão, rapidez e facilidade. Para isto, é necessário utilizar uma tecnologia para a identificação da presença do aluno que, chama-se \emph{Beacon} e está presente em praticamente todos os \emph{smartphones} atuais com suporte a \emph{Bluetooth 4.0}.
 
-Além da marcação de presença dos alunos, a aplicação identifica pontos de interesse na instituição de ensino, informando aos gestores da instituição quais os locais mais frequentados pelos alunos e seus horários, informações que são adquiridas também através de \emph{Beacons}.
+Além da marcação de presença dos alunos, esta aplicação identifica pontos de interesse na instituição de ensino, informando aos gestores da instituição e demais interessados setores quais os locais mais frequentados pelos alunos e seus respectivos horários. Informações essas que são adquiridas também através de \emph{Beacons}.
 
 % ----------------------------------------------------------
 % Problematização  
@@ -201,7 +201,7 @@ Além da marcação de presença dos alunos, a aplicação identifica pontos de 
 
 \chapter{Problematização}
 
-Atualmente, para que um professor de uma disciplina faça a marcação de presença dos alunos, é necessário algum tipo de interação entre o aluno e o professor. O método mais utilizado é a chamada em voz alta, um por um, e o aluno precisa responder, também em voz alta. Outro método muito utilizado, é o aluno assinar uma ata em todas as aulas, marcando sua presença. Ambos os métodos tem diversos problemas:
+Atualmente para que um professor faça a marcação de presença dos alunos é necessário algum tipo de interação entre o aluno e o professor. O método mais utilizado é a chamada em voz alta, um por um, e o aluno precisa responder, também em voz alta. Outro método muito utilizado é o aluno assinar uma ata em todas as aulas, marcando sua presença. Ambos os métodos tem diversos problemas, como:
 
 \begin{itemize}
     \item Enorme tempo de aula gasto para a marcação de presença;
@@ -210,7 +210,7 @@ Atualmente, para que um professor de uma disciplina faça a marcação de presen
     \item Preenchimento manual, pode haver erro humano na marcação, dificultando o processo.
 \end{itemize}
 
-Além de todos estes problemas, ainda existe uma enorme vantagem em informatizar o processo: permitir que sejam feitas análises de forma ágil e rápida em cima das informações de chamada, algo inviável de ser fazer quando o processo é manual. Com as informações computadorizadas, o aluno poderia facilmente receber um alerta quando está faltando demais às aulas e a instituição poderia, por exemplo, verificar qual o dia de maior falta e atual com maior agilidade.
+Além de todos estes fatores, ainda existe uma enorme vantagem em informatizar o processo: permitir que sejam feitas análises de forma ágil e rápida em cima das informações de chamada, algo inviável de ser fazer quando o processo é manual. Com as informações computadorizadas, o aluno poderia facilmente receber um alerta quando está faltando demais às aulas e a instituição poderia, por exemplo, verificar qual o dia de maior falta e atuar com maior agilidade.
 
 
 % ----------------------------------------------------------
@@ -259,18 +259,18 @@ Mas para o funcionamento básico de um \emph{Beacon}, é necessário que ele ten
     \item Bateria: o Beacon precisa de energia para seu funcionamento, pois ficará emitindo sinais de tempo em tempo (isto é configurável) para que os dispositivos recebam suas informações.
     \item Pequeno computador: para o funcionamento entre bateria, \emph{Bluetooth} e \emph{firmware}.
     \item \emph{Bluetooth}: tecnologia utilizada para comunicação do \emph{Beacon} com os demais dispositivos.
-    \item \emph{Firmware}: software que irá configurar o Beacon, tanto suas informações (que estão descritas abaixo) quanto sua potência de sinal e também seu intervalo de disparo.
+    \item \emph{Firmware}: \emph{software} que irá configurar o \emph{Beacon}, tanto suas informações (que estão descritas abaixo) quanto sua potência de sinal e também seu intervalo de disparo.
 \end{itemize}
 
 Além disto, é necessário que o \emph{Beacon} tenha algumas informações para seu mínimo funcionamento:
 
 \begin{itemize}
-    \item \emph{UDID}: identificador do \emph{Beacon} com tipo \emph{hash}. Pode ser igual ao de outros Beacons, desde que a aplicação tenha isto como objetivo.
+    \item \emph{UDID}: identificador do \emph{Beacon} com tipo \emph{hash}. Pode ser igual ao de outros \emph{Beacons}, desde que a aplicação tenha esse objetivo.
     \item \emph{Major}: identificador numérico do \emph{Beacon} para uso na aplicação.
     \item \emph{Minor}: identificador numérico do \emph{Beacon} para uso na aplicação.
 \end{itemize}
 
-Estas informações contidas dentro do \emph{Beacon}, são utilizadas para sua identificação dentro da aplicação, pois com ela é possível saber em qual contexto o usuário está. No \emph{software} desenvolvido no presente projeto, todos os \emph{Beacons} podem ter o mesmo identificador, mas com \emph{major} diferentes, pois assim a aplicação precisa ficar apenas escutando um identificador mas com a diferença no valor do \emph{major} será possível saber em qual sala de aula ou local da instituição o aluno está.
+Estas informações contidas no \emph{Beacon}, são utilizadas para sua identificação dentro da aplicação, pois com ela é possível saber em qual contexto o usuário está inserido. No \emph{software} desenvolvido no presente projeto, todos os \emph{Beacons} podem ter o mesmo identificador, mas com \emph{major} diferentes, pois assim a aplicação precisa ficar apenas escutando um identificador mas com a diferença no valor do \emph{major} será possível saber em qual sala de aula ou local da instituição o aluno está.
 
 \begin{figure}[h]
 \centering
@@ -282,47 +282,47 @@ Estas informações contidas dentro do \emph{Beacon}, são utilizadas para sua i
 
 \subsection{Funcionamento}
 
-O funcionamento do \emph{Beacon}, depende principalmente de três elementos que são configuráveis: o intervalo de disparo de sinal (normalmente em torno de 600ms) e a força do sinal, que é o que irá determinar a distância máxima atingida pelo \emph{Beacon}. O sistema operacional \emph{iOS} faz o scan dos dispositivos a cada 1 segundo, isto significa que se o o \emph{Beacon} estiver com intervalo de disparo em 330ms, o iOS irá receber três vezes o sinal naquele momento. Esta configuração normalmente é feita para lugares mais barulhentos, onde o sinal pode não chegar sempre ao celular, por motivos de outras ondas interferirem na comunicação \cite{beacon-how-it-works-estimote}.
+O funcionamento do \emph{Beacon}, depende principalmente de três elementos que são configuráveis: o intervalo de disparo de sinal (normalmente em torno de 600ms) e a força do sinal, que é o que irá determinar a distância máxima atingida pelo \emph{Beacon}. O sistema operacional \emph{iOS} faz o \emph{scan} dos dispositivos a cada 1 segundo, isto significa que se o o \emph{Beacon} estiver com intervalo de disparo em 330ms, o iOS irá receber três vezes o sinal naquele momento. Esta configuração normalmente é feita para lugares mais barulhentos, onde o sinal pode não chegar sempre ao celular, por motivos de outras ondas interferirem na comunicação \cite{beacon-how-it-works-estimote}.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.85\textwidth]{beacon-how-it-works}
     \caption{
-        A imagem mostra o comportamento do \emph{Beacon} com três telefones, um escutando-o, outro com Bluetooth desligado e outro escutando outro \emph{Beacon}. Fonte: Autor.
+        A imagem mostra o comportamento do \emph{Beacon} com três telefones, um escutando-o, outro com \emph{Bluetooth} desligado e outro escutando outro \emph{Beacon}. Fonte: Autor.
     }
 \end{figure}
 
 \subsection{Segurança}
 
-O \emph{Beacon} é considerada uma tecnologia muito segura, principalmente pelo fato de ela depender da aprovação do usuário para seu funcionamento interferi-lo, pois em primeiro lugar, é necessário que o usuário tenha instalado um aplicativo que consiga ficar escutando as ondas de certos \emph{Beacons}, e mesmo que o usuário tenha o aplicativo instalado, ele ainda precisa aprovar o monitoramento dos \emph{Beacons}, podendo aprovar e restringir a qualquer momento \cite{beacon-what-is-it-forbes}.
+O \emph{Beacon} é considerada uma tecnologia muito segura, principalmente pelo fato de eladepender da aprovação do usuário para seu funcionamento, pois em primeiro lugar, é necessário que o usuário tenha instalado um aplicativo que consiga ficar escutando as ondas de certos \emph{Beacons} e mesmo que o usuário tenha o aplicativo instalado, ele ainda precisa aprovar o monitoramento dos \emph{Beacons}, podendo aprovar e restringir a qualquer momento \cite{beacon-what-is-it-forbes}.
 
 \section{Tecnologias}
 
 \subsection{Swift}
 
-Swift é uma linguagem \emph{open-source} extremamente moderna que foi liberada para o público em 2014, mas seu desenvolvimento inicou em 2010. Ela foi desenvolvida pela Apple, mas não é utilizada exclusivamente para seu ecossistema. Conquistou rapidamente os desenvolvedores de aplicativos para iOS e hoje é utilizada na grande maioria dos novos aplicativos.
+\emph{Swift} é uma linguagem \emph{open-source} extremamente moderna que foi liberada para o público em 2014, mas seu desenvolvimento inicou em 2010. Ela foi desenvolvida pela Apple, mas não é utilizada exclusivamente para seu ecossistema \cite{swift-about}. Conquistou rapidamente os desenvolvedores de aplicativos para iOS e hoje é utilizada na maioria dos novos aplicativos.
 
-Como dito em \cite{swift-about}, Swift é uma linguagem estática, compilada e com uma sintaxe muito moderna que traz bastante segurança e rapidez aos desenvolvedores.
+\emph{Swift} é uma linguagem estática, compilada e com uma sintaxe muito moderna que traz bastante segurança e rapidez aos desenvolvedores \cite{swift-about}.
 
 \subsection{Web Services}
 
-\emph{Web service} é uma interface que descreve uma coleção de operações que são acessíveis através da internet padronizados em \emph{XML}, \emph{JSON} ou algum tipo de padrão de informações conhecido, desde que todas as operações sigam o mesmo padrão. Ele providência todos os meios para a comunicação da aplicação com o servidor, tornando a comunicação padrão e centralizada para todas as aplicações do serviço \cite{introduction-web-services}.
+\emph{Web service} é uma interface que descreve uma coleção de operações que são acessíveis através da internet padronizados em \emph{XML}, \emph{JSON} ou algum tipo de padrão de informações conhecido, desde que todas as operações sigam o mesmo padrão. Ele providencia todos os meios para a comunicação da aplicação com o servidor, tornando a comunicação padrão e centralizada para todas as aplicações do serviço \cite{introduction-web-services}.
 
-Para o desenvolvimento dos \emph{web services}, serão utilizadas diversas tecnologias em conjunto, proporcionando assim um sistema facilmente escalável e seguro. Ele utilizará o padrão \emph{JSON} em seus serviços para que as mesmas possam ser utilizadas por todos os softwares que conversarão com a plataforma, seja ele um aplicativo ou um servidor que se integrará, fornecendo ou pedindo informações.
+Para o desenvolvimento dos \emph{web services}, serão utilizadas diversas tecnologias em conjunto, proporcionando assim um sistema facilmente escalável e seguro. Ele utilizará o padrão \emph{JSON} em seus serviços para que as mesmas possam ser utilizadas por todos os softwares que conversarão com a plataforma, seja ele um aplicativo ou um servidor, fornecendo ou pedindo informações.
 
 \subsubsection{Infraestrutura}
 
-Na infraestrutura, foi optado a utilização de software livre e de código-aberto, já conhecidos no mercado há muitos anos, por serem mais maduros e por consequência mais seguros e estáveis.
+Na infraestrutura, optou-se pela utilização de software livre e de código aberto, já conhecidos no mercado há anos, por serem mais seguros e estáveis.
 
 Como servidor \emph{HTTP}, será utilizado o \emph{Nginx}, criado em 2002 com o objetivo de servir sites com um enorme volume de acessos. É um software bastante leve e utilizado mundialmente hoje em aplicações de grande escala \cite{nginx-book}.
 
-O sistema operacional utilizado no servidor será o \emph{Ubuntu Server LTS 16.04}, também é um software livre e de código aberto. Também foi escolhido este sistema operacional pelo fato de os autores já terem conhecimento prévio na utilização da tecnologias nesta plataforma, facilitando o desenvolvimento.
+O sistema operacional utilizado no servidor será o \emph{Ubuntu Server LTS 16.04}, também é um software livre e de código aberto. Também foi escolhido este sistema operacional pelo fato dos autores já terem conhecimento prévio na utilização da tecnologias nesta plataforma, facilitando o desenvolvimento.
 
 \subsubsection{Django}
 
-Em questões de aplicação no \emph{web service}, será utilizado \emph{Django}, que é um \emph{framework} utilizado em aplicações \emph{Python}, que fornece inúmeras facilidades como: \emph{ORM (Object-relational mapping)}, construção de \emph{API}, migrações de bancos de dados e um painel administrativo que se constrói automaticamente baseado no modelo do banco de dados.
+Na interface de aplicação do \emph{web service}, será utilizado \emph{Django}, que é um \emph{framework} utilizado em aplicações \emph{Python}, que fornece inúmeras facilidades como: \emph{ORM (Object-relational mapping)}, construção de \emph{API}, migrações de bancos de dados e um painel administrativo que se constrói automaticamente baseado no modelo do banco de dados.
 
-Django utiliza o padrão \emph{MTV (Model-Template-View)} e o princípio \emph{DRY (Don't repeat yourself)} para o desenvolvimento. Isto faz com que exista uma separação muito clara entre o modelo, o template e o design do projeto, tornando-se mais fácil de reutilizar código e testar unitariamente os métodos e classes \cite{django-wikipedia}. 
+\emph{Django} utiliza o padrão \emph{MTV (Model-Template-View)} e o princípio \emph{DRY (Don't repeat yourself)} para o desenvolvimento. Isto faz com que exista uma separação muito clara entre o modelo, o template e o design do projeto, tornando-se mais fácil de reutilizar código e testar unitariamente os métodos e classes \cite{django-wikipedia}. 
 
 \subsubsection{JSON}
 
@@ -336,7 +336,7 @@ Toda a comunicação entre a \emph{API} e as aplicações será feita no padrão
 
 \chapter{Justificativa}
 
-Conforme o gráfico abaixo, pode-se notar que o crescimento do uso de smartphones no Brasil cresce drasticamente a cada ano, deixando claramente evidente que grande parte da população tem, pelo menos, um smartphone.
+Conforme o gráfico abaixo, pode-se notar que o crescimento do uso de \emph{smartphones} no mundo cresce a cada ano, evidenciando que grande parte da população tem, pelo menos, um \emph{smartphone}.
 
 \begin{figure}[h]
 \centering
@@ -346,9 +346,11 @@ Conforme o gráfico abaixo, pode-se notar que o crescimento do uso de smartphone
     }
 \end{figure}
 
-Com com estas informações, pode-se entender que a maioria das pessoas que frequenta uma instituição de ensino, terá um \emph{smartphone} em mãos. Levando em consideração que a maioria dos \emph{smartphones} no mercado tem a tecnologia \emph{Bluetooth}, pode-se entender então, que é uma tecnologia bastante presente nos dias atuais, tendendo a ser mais presente ainda com a entrada de novos dispositivos que aderirem a tecnologia \cite{bluetooth-devices}.
+Com estas informações pode-se entender que a maioria das pessoas que frequenta uma instituição de ensino, terá um \emph{smartphone} em mãos. Levando em consideração que a maioria dos \emph{smartphones} no mercado tem a tecnologia \emph{Bluetooth}, pode-se entender então que é uma tecnologia bastante presente nos dias atuais, tendendo a ser mais presente ainda com a entrada de novos dispositivos que aderirem a tecnologia \cite{bluetooth-devices}.
 
-Neste cenário, diante dos problemas citados no capítulo de problematização, foi concluído que pode-se resolver os problemas utilizando uma tecnologia como o \emph{Bluetooth}, otimizando o tempo gasto em sala de aula, deixando-a mais produtiva e dinâmica.
+Neste cenário diante dos fatores citados no capítulo de problematização, foi concluído que pode-se obter soluções utilizando uma tecnologia como o \emph{Bluetooth}, otimizando o tempo gasto em sala de aula, deixando-a mais produtiva e dinâmica.
+
+Além disto, é importante ressaltar que no modelo manual (em papel) de chamadas não existe uma maneira fácil de aplicar operações de \emph{Big Data}\footnote{Refere-se a um grande conjunto de dados armazenados. \cite{bigdata-wikipedia}} e \emph{BI}\footnote{O termo Business Intelligence (BI), inteligência de negócios, refere-se ao processo de coleta, organização, análise, compartilhamento e monitoramento de informações que oferecem suporte a gestão de negócios. \cite{bi-mean}} nas informações armazenadas. Com a informatização das informações, é possível que sejam levantados dados relevantes ainda não descobertas sobre as aulas e o comportamento dos alunos e professores na instituição de ensino.
 
 
 % ----------------------------------------------------------
@@ -361,11 +363,11 @@ Neste cenário, diante dos problemas citados no capítulo de problematização, 
 Otimizar as atividades de registro de presenças de alunos (controle de frequência em sala de aula) através do desenvolvimento e disponibilização de um produto com a utilização de \emph{Beacons} e \emph{smartphones}.
 
 \section{Objetivos específicos}
-\begin{enumerate}
+\begin{itemize}
   \item Desenvolver uma aplicação web para fornecimento de informações dos alunos aos aplicativos através de uma \emph{API}, além de fornecer as informações de presença aos professores em formato de relatório;
   \item Desenvolver uma aplicação para \emph{iOS} que será utilizada pelos alunos para a marcação de presença em sala de aula de forma automática, utilizando \emph{Beacons} que serão instalados em salas de aula e na instituição de ensino;
   \item Testar aplicação em uma sala de aula de alguma instituição de ensino com um grupo de alunos, durante pelo menos 3 meses;
-\end{enumerate}
+\end{itemize}
 
 % ----------------------------------------------------------
 % Resultados Esperados
@@ -373,8 +375,8 @@ Otimizar as atividades de registro de presenças de alunos (controle de frequên
 
 \chapter{Resultados esperados}
 
-Espera-se atingir o objetivo proposto, tornando viável um melhor controle de presença dos alunos em instituições de ensino, mais produtivo e mais eficaz do que o atual praticado pela maioria das instituições.
-O sucesso desta aplicação, bem como sua comercialização, também é esperada, podendo assim, ser aplicada em diversas instituições de ensino com cenários diferentes.
+Espera-se atingir o objetivo proposto, tornando viável um melhor controle de presença dos alunos em instituições de ensino, mais produtivo e eficaz do que o atual praticado pela maioria das instituições.
+O sucesso desta aplicação bem como sua comercialização também é esperada, podendo assim ser aplicada em diversas instituições de ensino com cenários diferentes.
 
 
 % ----------------------------------------------------------
@@ -384,28 +386,30 @@ O sucesso desta aplicação, bem como sua comercialização, também é esperada
 \chapter{Metodologia}
 \section{Proposta do sistema}
 
-Este projeto propõe o desenvolvimento de uma aplicação para \emph{iOS}, que poderá ser publicada na \emph{App Store}\footnote{Loja oficinal de aplicativos para iOS, maiores informações em: https://developer.apple.com/app-store/}, onde alunos das instituições de ensino irão se autenticar para efetivamente usa-lo para que a chamada em sala de aula seja feita de forma automática. Além desta aplicação, também será desenvolvido um servidor web, que poderá ser hospedado em qualquer serviço de \emph{Cloud Computing}\footnote{Computação em Nuvem, onde as preocupações com a largura de banda, espaço de armazenamento, poder de processamento, fiabilidade e segurança, são postas de parte\cite{cloud-computing-about}} (\emph{AWS}\footnote{https://aws.amazon.com/pt/}, por exemplo). Neste servidor estará toda a integração com o aplicativo para \emph{iOS} e demais plataformas futuramente, como \emph{Android}\footnote{Sistema Operacional Open Source desenvolvido pelo Google e disponível em: https://android.com/intl/pt\-BR\_br/}, por exemplo.
+Este projeto propõe o desenvolvimento de uma aplicação para \emph{iOS}, que poderá ser publicada na \emph{App Store}\footnote{Loja oficinal de aplicativos para iOS, maiores informações em: https://developer.apple.com/app-store/}, onde alunos das instituições de ensino irão se autenticar para efetivamente usa-lo, para que a chamada em sala de aula seja feita de forma automática. Além desta aplicação, também será desenvolvido um servidor web, que poderá ser hospedado em qualquer serviço de \emph{Cloud Computing}\footnote{Computação em Nuvem, onde as preocupações com a largura de banda, espaço de armazenamento, poder de processamento, fiabilidade e segurança, são postas de parte\cite{cloud-computing-about}} (\emph{AWS}\footnote{https://aws.amazon.com/pt/}, por exemplo). Neste servidor estará toda a integração com o aplicativo para \emph{iOS} e demais plataformas futuramente, como \emph{Android}\footnote{Sistema Operacional Open Source desenvolvido pelo Google e disponível em: https://android.com/intl/pt\-BR\_br/}, por exemplo.
 
 \subsection{Aplicativo iOS}
 
-O aplicativo iOS é a aplicação na qual o aluno irá interagir, autenticando-se e vendo informações de suas disciplinas matriculadas, além de permitir acesso Bluetooth e de localização ao aplicativo, para que a presença do aluno seja marcada automaticamente nas disciplinas, através dos \emph{Beacons} instalados em sala de aula.
+O aplicativo iOS é a aplicação na qual o aluno irá interagir, autenticando-se e vendo informações de suas disciplinas matriculadas, além de permitir acesso Bluetooth e de localização ao aplicativo, para que a presença do aluno seja marcada automaticamente nas disciplinas através dos \emph{Beacons} instalados em sala de aula.
 
-O aluno, após autenticar-se, poderá acompanhar quais cadeiras está matriculado em uma listagem e dentro de cada cadeira poderá ver informações importantes como: nome do professor, e-mail do professor, sala de aula, data da próxima aula, quantidade de presenças e faltas e se possível, as notas da cadeira.
+O aluno após autenticar-se, poderá acompanhar quais disciplinas está matriculado em uma listagem e dentro de cada disciplina poderá ver informações importantes como: nome do professor, e-mail do professor, sala de aula, data da próxima aula, quantidade de presenças e faltas e se possível, as notas da disciplina.
 
 \subsection{Servidor Web}
 
-O servidor web servirá como um apoio fundamental para o funcionamento do aplicativo, pois nele estarão todos os dados sincronizados entre o software e a instituição de ensino, além das informações providas do próprio aluno automaticamente, através dos \emph{Beacons}.
+O servidor web servirá como um apoio fundamental para o funcionamento do aplicativo, pois nele estarão todos os dados sincronizados entre o \emph{software} e a instituição de ensino, além das informações providas do próprio aluno automaticamente, através dos \emph{Beacons}.
 
 Além de armazenar os dados, ele terá uma \emph{API}\footnote{Application Programming Interface: interface padrão para comunicação entre os dispositivos \cite{footnote-api}.} que fornecerá as informações no formato \emph{JSON}\footnote{Padrão aberto de comunicação em formato de objeto JavaScript, de fácil leitura e compreensão \cite{footnote-json}.} para as aplicações (e demais futuras que queiram integrar). Toda a comunicação com o servidor é feita de forma segura, utilizando o protocolo \emph{SSL}\footnote{Secure Sockets Layer: protocolo seguro de comunicação, que criptografa as informações através de um certificado seguro e validado \cite{footnote-ssl}}. 
 
 \section{Desenvolvimento do sistema}
 \subsection{Análise}
 
-Será feito uma análise de quais os elementos (e suas características) existentes em um ambiente de chamadas de uma instituição de ensino superior que podem ajudar na elaboração do projeto, com informações importantes e até mesmo obrigatórias, do ponto de vista jurídico.
+Será feito uma análise de quais os elementos (e suas características) existentes em um ambiente de chamadas de uma instituição de ensino superior que podem ajudar na elaboração do projeto, com informações importantes e até mesmo obrigatórias para a elaboração da chamada automatizada, para não deixar de conter nenhuma informação relevante.
 
 \subsection{Projeto}
 
-A partir dos dados analisados, serão criados diagramas que demonstrarão a estrutura e fluxo da aplicação. Em seguirá será feito o projeto da interface com \emph{mockups} do aplicativo para visualização.
+Todo o processo de desenvolvimento e análise utilizará a metodologia ágil chamada \emph{Scrum}, método muito difundido hoje, visando ter mais agilidade nos processos, dividindo as tarefas em outras tarefas pequenas, permitindo assim ver o projeto como um todo, facilitando muito a projeção de prazos, funcionalidades e desempenho \cite{scrum}.
+
+Com relação ao desenvolvimento, a partir dos dados analisados, serão criados diagramas que demonstrarão a estrutura e fluxo da aplicação. Em seguirá será feito o projeto da interface com \emph{mockups} do aplicativo para visualização.
 
 \subsection{Codificação}
 
@@ -421,15 +425,21 @@ O \emph{software} a ser desenvolvido será instalado em um servidor na nuvem \em
 
 \section{Manutenção do sistema}
 
-O software utilizará \emph{git}\footnote{Sistema de controle de versão amplamente utilizado no mundo, disponível em: https://git-scm.com} para controle de versão, na plataforma do \emph{GitHub} de forma privada. Nunca sendo alterado código diretamente em produção ou qualquer outro meio que não esteja vinculado ao controle de versão.
+Para a manutenção do software, será utilizado o processo de desenvolvimento incremental, para o controle de versionamento, manutenção corretiva e evolutiva das versões lançadas (inclusive na fase de testes).
 
-Também haverá marcação de \emph{tags} para cada versão oficial enviada, tanto nos aplicativos móveis quanto no código do servidor.
+Para isto, será utilizado o software \emph{git}\footnote{Sistema de controle de versão amplamente utilizado no mundo, disponível em: https://git-scm.com} para controle de versão, na plataforma do \emph{GitHub} de forma privada. Nunca sendo alterado código diretamente em produção ou qualquer outro meio que não esteja vinculado ao controle de versão.
 
 \section{Tecnologias e ferramentas}
 
 O desenvolvimento do software para \emph{iOS} será desenvolvimento na \emph{IDE} \footnote{Integrated Development Enviroment}, ou Ambiente Integrado para desenvolvimento) \emph{Xcode}, fornecido pela Apple para desenvolvimento de aplicativos \emph{iOS} e \emph{macOS}.
 
 Na aplicação web, serão utilizadas ferramentas já muito maduras no mercado, com o objetivo de ter uma aplicação estável, de fácil manutenção e segura. A primeira camada de comunicação do servidor será feita com \emph{Nginx}\footnote{Servidor Web mundialmente conhecido e utilizado, disponível em: https://nginx.com}, seguida do \emph{Gunicorn}\footnote{Servidor Python WSGI HTTP para Linux, disponível em: http://gunicorn.org}, responsável por manter a aplicação feita em \emph{Django}\footnote{Framework Python amplamente utilizado, disponível em: https://djangoproject.com} sempre ligada, respondendo as demandas dos usuários. O \emph{Django} oferece soluções muito fáceis e eficientes para a construção de um banco de dados, que neste caso será o \emph{PostgreSQL}\footnote{Banco de Dados Open Source, disponível em: https://postgresql.org}, para a construção de um painel administrativo e também de um API.
+
+\section{Futuras versões e expansão}
+
+No desenvolvimento inicial deste projeto, será feito um aplicativo para a plataforma \emph{iOS}, mas no futuro poderão ser desenvolvidas versões para outros sistemas operacionais, como \emph{Android} e \emph{Windows Phone}, para uma maior utilização do software.
+
+Todos os \emph{web services} criados serão feitos de tal maneira que possam ser utilizadas os mesmos serviços para todas as plataformas, podendo mudar talvez, alguns parâmetros por plataforma.
 
 
 % ----------------------------------------------------------
