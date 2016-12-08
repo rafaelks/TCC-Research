@@ -90,6 +90,7 @@
 % ---
 \titulo{Aplicação que utiliza Beacons para automatizar a chamada em sala de aula}
 \autor{Rafael Kellermann Streit}
+\orientador{Eurico Antunes}
 \local{Brasil}
 \data{2016}
 \instituicao{%
@@ -398,18 +399,18 @@ O aluno após autenticar-se, poderá acompanhar quais disciplinas está matricul
 
 O servidor web servirá como um apoio fundamental para o funcionamento do aplicativo, pois nele estarão todos os dados sincronizados entre o \emph{software} e a instituição de ensino, além das informações providas do próprio aluno automaticamente, através dos \emph{Beacons}.
 
-Além de armazenar os dados, ele terá uma \emph{API}\footnote{Application Programming Interface: interface padrão para comunicação entre os dispositivos \cite{footnote-api}.} que fornecerá as informações no formato \emph{JSON}\footnote{Padrão aberto de comunicação em formato de objeto JavaScript, de fácil leitura e compreensão \cite{footnote-json}.} para as aplicações (e demais futuras que queiram integrar). Toda a comunicação com o servidor é feita de forma segura, utilizando o protocolo \emph{SSL}\footnote{Secure Sockets Layer: protocolo seguro de comunicação, que criptografa as informações através de um certificado seguro e validado \cite{footnote-ssl}}. 
+Além de armazenar os dados, ele terá uma \emph{API}\footnote{Application Programming Interface: interface padrão para comunicação entre os dispositivos \cite{footnote-api}.} que fornecerá as informações no formato \emph{JSON}\footnote{Padrão aberto de comunicação em formato de objeto JavaScript, de fácil leitura e compreensão \cite{footnote-json}.} para as aplicações citadas neste trabalho (e demais aplicações que queiram integrar). Toda a comunicação com o servidor é feita de forma segura, utilizando o protocolo \emph{SSL}\footnote{Secure Sockets Layer: protocolo seguro de comunicação, que criptografa as informações através de um certificado seguro e validado \cite{footnote-ssl}}. 
 
 \section{Desenvolvimento do sistema}
 \subsection{Análise}
 
-Será feito uma análise de quais os elementos (e suas características) existentes em um ambiente de chamadas de uma instituição de ensino superior que podem ajudar na elaboração do projeto, com informações importantes e até mesmo obrigatórias para a elaboração da chamada automatizada, para não deixar de conter nenhuma informação relevante.
+Será feito uma análise dos elementos (e suas características) existentes em um ambiente de chamadas de uma instituição de ensino superior que podem ajudar na elaboração do projeto, com informações importantes e até mesmo obrigatórias para a elaboração da chamada automatizada, para não deixar de conter nenhuma informação relevante.
 
 \subsection{Projeto}
 
-Todo o processo de desenvolvimento e análise utilizará a metodologia ágil chamada \emph{Scrum}, método muito difundido hoje, visando ter mais agilidade nos processos, dividindo as tarefas em outras tarefas pequenas, permitindo assim ver o projeto como um todo, facilitando muito a projeção de prazos, funcionalidades e desempenho \cite{scrum}.
+Todo o processo de desenvolvimento e análise utilizará a metodologia ágil chamada \emph{Scrum}, método muito difundido hoje, visando ter mais flexibilidade nos processos, dividindo as tarefas em outras tarefas pequenas, permitindo assim ver o projeto como um todo, facilitando muito a projeção de prazos, funcionalidades e desempenho \cite{scrum}.
 
-Com relação ao desenvolvimento, a partir dos dados analisados, serão criados diagramas que demonstrarão a estrutura e fluxo da aplicação. Em seguirá será feito o projeto da interface com \emph{mockups} do aplicativo para visualização.
+Com relação ao desenvolvimento a partir dos dados analisados, serão criados diagramas que demonstrarão a estrutura e fluxo da aplicação. Em seguida será feito o projeto da interface com \emph{mockups} do aplicativo para visualização.
 
 \subsection{Codificação}
 
@@ -421,25 +422,25 @@ Tanto a aplicação web quanto a aplicação para \emph{iOS} terão testes unit�
 
 \subsection{Implantação}
 
-O \emph{software} a ser desenvolvido será instalado em um servidor na nuvem \emph{Ubuntu Server LTS} e a aplicação \emph{iOS} inicialmente será distribuída através do \emph{TestFlight}, que é uma plataforma de distribuição fornecida para a \emph{Apple} enquanto a aplicação não está disponível para o público. Quando a aplicação estiver pronta para o público, ela será publicada na \emph{App Store}, sendo assim, acessível por todos.
+O \emph{software} a ser desenvolvido será instalado em um servidor na nuvem \emph{Ubuntu Server LTS} e a aplicação \emph{iOS} inicialmente será distribuída através do \emph{TestFlight}, uma plataforma de distribuição fornecida para a \emph{Apple} enquanto a aplicação não está disponível para o público. Quando a aplicação estiver pronta para o público, ela será publicada na \emph{App Store}, sendo assim, acessível por todos.
 
 \section{Manutenção do sistema}
 
-Para a manutenção do software, será utilizado o processo de desenvolvimento incremental, para o controle de versionamento, manutenção corretiva e evolutiva das versões lançadas (inclusive na fase de testes).
+Para a manutenção do software será utilizado o processo de desenvolvimento incremental, para o controle de versionamento, manutenção corretiva e evolutiva das versões lançadas (inclusive na fase de testes).
 
 Para isto, será utilizado o software \emph{git}\footnote{Sistema de controle de versão amplamente utilizado no mundo, disponível em: https://git-scm.com} para controle de versão, na plataforma do \emph{GitHub} de forma privada. Nunca sendo alterado código diretamente em produção ou qualquer outro meio que não esteja vinculado ao controle de versão.
 
 \section{Tecnologias e ferramentas}
 
-O desenvolvimento do software para \emph{iOS} será desenvolvimento na \emph{IDE} \footnote{Integrated Development Enviroment}, ou Ambiente Integrado para desenvolvimento) \emph{Xcode}, fornecido pela Apple para desenvolvimento de aplicativos \emph{iOS} e \emph{macOS}.
+O desenvolvimento do \emph{software} para \emph{iOS} será desenvolvimento na \emph{IDE} \footnote{Integrated Development Enviroment}, ou Ambiente Integrado para desenvolvimento) \emph{Xcode}, fornecido pela Apple para desenvolvimento de aplicativos \emph{iOS} e \emph{macOS}.
 
-Na aplicação web, serão utilizadas ferramentas já muito maduras no mercado, com o objetivo de ter uma aplicação estável, de fácil manutenção e segura. A primeira camada de comunicação do servidor será feita com \emph{Nginx}\footnote{Servidor Web mundialmente conhecido e utilizado, disponível em: https://nginx.com}, seguida do \emph{Gunicorn}\footnote{Servidor Python WSGI HTTP para Linux, disponível em: http://gunicorn.org}, responsável por manter a aplicação feita em \emph{Django}\footnote{Framework Python amplamente utilizado, disponível em: https://djangoproject.com} sempre ligada, respondendo as demandas dos usuários. O \emph{Django} oferece soluções muito fáceis e eficientes para a construção de um banco de dados, que neste caso será o \emph{PostgreSQL}\footnote{Banco de Dados Open Source, disponível em: https://postgresql.org}, para a construção de um painel administrativo e também de um API.
+Na aplicação web, serão utilizadas ferramentas já muito maduras no mercado, com o objetivo de ter uma aplicação estável, de fácil manutenção e segura. A primeira camada de comunicação do servidor será feita com \emph{Nginx}\footnote{Servidor Web mundialmente conhecido e utilizado, disponível em: https://nginx.com}, seguida do \emph{Gunicorn}\footnote{Servidor Python WSGI HTTP para Linux, disponível em: http://gunicorn.org}, responsável por manter a aplicação feita em \emph{Django}\footnote{Framework Python amplamente utilizado, disponível em: https://djangoproject.com} sempre ligada, respondendo as demandas dos usuários. O \emph{Django} oferece soluções muito fáceis e eficientes para a construção de um banco de dados, que neste caso será o \emph{PostgreSQL}\footnote{Banco de Dados Open Source, disponível em: https://postgresql.org}, para a construção de um painel administrativo e também de um \emph{API}.
 
 \section{Futuras versões e expansão}
 
-No desenvolvimento inicial deste projeto, será feito um aplicativo para a plataforma \emph{iOS}, mas no futuro poderão ser desenvolvidas versões para outros sistemas operacionais, como \emph{Android} e \emph{Windows Phone}, para uma maior utilização do software.
+No desenvolvimento inicial deste projeto, será feito um aplicativo para a plataforma \emph{iOS}, mas posteriormente poderão ser desenvolvidas versões para outros sistemas operacionais, como \emph{Android} e \emph{Windows Phone}, para uma maior utilização do \emph{software}.
 
-Todos os \emph{web services} criados serão feitos de tal maneira que possam ser utilizadas os mesmos serviços para todas as plataformas, podendo mudar talvez, alguns parâmetros por plataforma.
+Todos os \emph{web services} criados serão feitos de tal maneira que possam ser utilizadas os mesmos serviços para todas as plataformas, podendo mudar alguns parâmetros por plataforma.
 
 
 % ----------------------------------------------------------
@@ -469,7 +470,7 @@ Todos os \emph{web services} criados serão feitos de tal maneira que possam ser
 
 \noindent
 \begin{table}[ht]
-    \caption{Investimento com pessoas}
+    \caption{Investimento com recursos humanos}
 
     \begin{tabularx}{\textwidth}{X|l|c|r|r}
     \hline
